@@ -34,6 +34,6 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "Error en la Conexion"+e);
         }
         return con;
+        }
     }
-    
 }
