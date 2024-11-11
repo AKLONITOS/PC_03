@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 
 public class Conexion {
-    public class conexion {
     private static String DRIVER="com.mysql.cj.jdbc.Driver";
     private static String USUARIO="root";
     private static String PASSWORD="";
@@ -35,6 +34,6 @@ public class Conexion {
         }
         return con;
     }
-    }
-    
 }
+    
+
