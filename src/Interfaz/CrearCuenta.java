@@ -10,9 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -24,8 +28,16 @@ public class CrearCuenta extends javax.swing.JFrame {
 
     public CrearCuenta() {
         initComponents();
+        
         generarUsuarioYClave();
         setLocationRelativeTo(null);
+         b_activo = new JRadioButton("Activo");
+    b_inactivo = new JRadioButton("Inactivo");
+
+    // Crear grupo de botones de radio
+    btg_estado = new ButtonGroup();
+    btg_estado.add(b_activo);
+    btg_estado.add(b_inactivo);
     }
     public void llenarCampos(String nombre, String apellido, String dni, String usuario, String clave, String correo, String estado, String rol, byte[] fotoBytes) {
         txt_nombre.setText(nombre);
@@ -62,13 +74,10 @@ public class CrearCuenta extends javax.swing.JFrame {
         txt_usuario.setText(usuarioAleatorio);
         txt_clave.setText(claveAleatoria);
     }
-    public void setEstadoActivo(boolean activo) {
-    if (activo) {
-        b_activo.setSelected(true);
-    } else {
-        b_inactivo.setSelected(true);
-    }
-}
+
+
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,8 +95,6 @@ public class CrearCuenta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txt_correo = new javax.swing.JTextField();
-        b_activo = new javax.swing.JRadioButton();
-        b_inactivo = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         CB_ROL = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -99,6 +106,9 @@ public class CrearCuenta extends javax.swing.JFrame {
         btn_nuevo = new javax.swing.JButton();
         btn_ListaUsuario = new javax.swing.JButton();
         txt_foto = new javax.swing.JTextField();
+        Panel = new javax.swing.JPanel();
+        b_inactivo = new javax.swing.JRadioButton();
+        b_activo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,12 +141,6 @@ public class CrearCuenta extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 268, -1, -1));
         getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 268, 247, -1));
 
-        b_activo.setText("Activo");
-        getContentPane().add(b_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 302, -1, -1));
-
-        b_inactivo.setText("Inactivo");
-        getContentPane().add(b_inactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 302, -1, -1));
-
         jLabel7.setText("Estado:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 304, -1, -1));
 
@@ -151,6 +155,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         getContentPane().add(lb_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 98, 164, 164));
 
         btn_foto.setText("Foto");
+        btn_foto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_fotoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 57, -1, -1));
 
         btn_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOTON AGREGAR.jpg"))); // NOI18N
@@ -185,6 +194,40 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         txt_foto.setEnabled(false);
         getContentPane().add(txt_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 160, -1));
+
+        Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        b_inactivo.setText("Inactivo");
+
+        b_activo.setText("Activo");
+        b_activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_activoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
+        Panel.setLayout(PanelLayout);
+        PanelLayout.setHorizontalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(b_activo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(b_inactivo)
+                .addContainerGap())
+        );
+        PanelLayout.setVerticalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(b_inactivo)
+                    .addComponent(b_activo))
+                .addContainerGap())
+        );
+
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 160, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,15 +288,40 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void btn_ListaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaUsuarioActionPerformed
         // TODO add your handling code here:
         ListaUsuario cuentaFrame = ListaUsuario.getInstance();
-        this.dispose();
+        
         if (!cuentaFrame.isVisible()) {
             cuentaFrame.setVisible(true);
+            
         } else {
             cuentaFrame.setState(JFrame.NORMAL);
         }
         
         
     }//GEN-LAST:event_btn_ListaUsuarioActionPerformed
+
+    private void b_activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_activoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_activoActionPerformed
+
+    private void btn_fotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fotoActionPerformed
+        // TODO add your handling code here:
+        FileNameExtensionFilter filtro=new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;.*JPEG)","jpg","jpeg");
+        JFileChooser archivo=new JFileChooser();
+        archivo.addChoosableFileFilter(filtro);
+        archivo.setDialogTitle("Abrir Archivo");
+        File ruta= new File("D:/");//para que aparesca la ruta
+        archivo.setCurrentDirectory(ruta);
+        
+        int ventana =archivo.showOpenDialog(null);
+        if (ventana== JFileChooser.APPROVE_OPTION) {
+            File file=archivo.getSelectedFile();
+            txt_foto.setText(String.valueOf(file));
+            Image foto=getToolkit().createImage(txt_foto.getText());
+            foto=foto.getScaledInstance(110, 110, Image.SCALE_DEFAULT);
+            lb_Foto.setIcon(new ImageIcon(foto));
+            
+        }
+    }//GEN-LAST:event_btn_fotoActionPerformed
 
     public static void main(String args[]) {
 
@@ -266,6 +334,7 @@ public class CrearCuenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CB_ROL;
+    private javax.swing.JPanel Panel;
     private javax.swing.JRadioButton b_activo;
     private javax.swing.JRadioButton b_inactivo;
     private javax.swing.ButtonGroup btg_estado;

@@ -16,7 +16,7 @@ public class ListaUsuario extends javax.swing.JFrame {
     public ListaUsuario() {
         initComponents();
         ListaUsuarios1();
-        pro.setVisible(true);
+        
         int x = pro.getX() + pro.getWidth(); 
         int y = pro.getY(); //
 
@@ -26,7 +26,7 @@ public class ListaUsuario extends javax.swing.JFrame {
         
 
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
       
     }
     public static ListaUsuario getInstance() {
@@ -149,18 +149,16 @@ public class ListaUsuario extends javax.swing.JFrame {
 
         pro.llenarCampos(nombre, apellido, dni, usuario, clave, correo, estado, rol, fotoBytes);
         
-
-        if (estado.equals("Activo")) {
-            pro.setEstadoActivo(true);
-        } else {
-            pro.setEstadoActivo(false);
-        }
-
+         if (!pro.isVisible()) {
+            pro.setVisible(true);
+         }
     }//GEN-LAST:event_tb_ListaUsuarioMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
