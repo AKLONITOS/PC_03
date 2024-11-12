@@ -12,6 +12,8 @@ git add -u .
 git commit -m "Record deletion of private.xml from the index"
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+private.xml 
+git check-ignore -v -- private.xml
 
 # Package Files #
 *.jar
