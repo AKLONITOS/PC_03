@@ -30,16 +30,23 @@ public class Login1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel1 = new javax.swing.JPanel();
         txt_usuario = new javax.swing.JTextField();
         txt_contra = new javax.swing.JTextField();
-        btn_crear = new javax.swing.JToggleButton();
         jcb_recordar = new javax.swing.JCheckBox();
+        lbl_erroneoContraseña = new javax.swing.JLabel();
+        lbl_erroneoUsuario = new javax.swing.JLabel();
         btn_ingresar = new javax.swing.JButton();
         btn_olvido = new javax.swing.JButton();
+        btn_crear = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_usuario.setText("USUARIO");
         txt_usuario.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -55,6 +62,7 @@ public class Login1 extends javax.swing.JFrame {
                 txt_usuarioActionPerformed(evt);
             }
         });
+        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 340, 37));
 
         txt_contra.setText("CONTRASEÑA");
         txt_contra.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -70,15 +78,12 @@ public class Login1 extends javax.swing.JFrame {
                 txt_contraActionPerformed(evt);
             }
         });
-
-        btn_crear.setText("CREAR CUENTA");
-        btn_crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearActionPerformed(evt);
-            }
-        });
+        jPanel1.add(txt_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 340, 37));
 
         jcb_recordar.setText("RECORDAR CONTRASEÑA");
+        jPanel1.add(jcb_recordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+        jPanel1.add(lbl_erroneoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 159, 22));
+        jPanel1.add(lbl_erroneoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 160, 26));
 
         btn_ingresar.setText("INGRESAR");
         btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,52 +96,28 @@ public class Login1 extends javax.swing.JFrame {
                 btn_ingresarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 162, -1));
 
         btn_olvido.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         btn_olvido.setText("¿Olvidó su contraseña?");
         btn_olvido.setBorder(null);
+        jPanel1.add(btn_olvido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 240, 29));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 103, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_olvido, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_usuario)
-                        .addComponent(txt_contra, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
-                .addGap(99, 99, 99))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcb_recordar)
-                            .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jcb_recordar)
-                .addGap(32, 32, 32)
-                .addComponent(btn_ingresar)
-                .addGap(31, 31, 31)
-                .addComponent(btn_olvido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btn_crear)
-                .addGap(50, 50, 50))
-        );
+        btn_crear.setText("CREAR CUENTA");
+        btn_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, 162, -1));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 57;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,7 +132,7 @@ public class Login1 extends javax.swing.JFrame {
 
     private void btn_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearActionPerformed
         // TODO add your handling code here:
-        
+        btn_crear.setEnabled(false);
         
         DocumentListener listener = new DocumentListener() {
             @Override
@@ -200,6 +181,46 @@ public class Login1 extends javax.swing.JFrame {
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
         // TODO add your handling code here:
+        String usuario, contraseña = null;
+        usuario = txt_usuario.getText().trim();
+        contraseña = txt_contra.getText().trim(); 
+
+        if (usuario.equals("Administrador") && contraseña.equals("123456")) {
+
+        } else {
+            if (usuario.isEmpty() || usuario.equals("Ingrese su nombre de usuario")) {
+                lbl_erroneoUsuario.setText("Este capo es obligatorio");
+                txt_usuario.setText("");
+                txt_contra.requestFocus();
+            } else {
+                if (!usuario.equals("admin")) {
+                    lbl_erroneoUsuario.setText("Usuario incorrecto");
+                    txt_usuario.setText("");
+                    txt_contra.requestFocus();
+                } else {
+                    lbl_erroneoUsuario.setText("");
+                }
+            }
+            if (contraseña.isEmpty() || contraseña.equals("Ingresar Contraseña")) {
+                lbl_erroneoContraseña.setText("Este capo es obligatorio");
+                txt_usuario.setText("");
+                txt_contra.requestFocus();
+            } else {
+                if (!contraseña.equals("admin123")) {
+                    lbl_erroneoContraseña.setText("Contraseña incorrecta");
+                    txt_usuario.setText("");
+                    txt_contra.requestFocus();
+                } else {
+                    lbl_erroneoContraseña.setText("");
+                }
+            }
+            if (usuario.isEmpty() || usuario.equals("Ingrese su nombre de usuario") && contraseña.isEmpty() || contraseña.equals("Ingresar Contraseña")) {
+                txt_contra.setText("Ingrese su nombre de usuario");
+                txt_contra.setText("Ingresar contraseña");
+                lbl_erroneoUsuario.setText("Porfavor rellene ambos campos");
+                lbl_erroneoContraseña.setText("");
+            }
+        }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
@@ -268,7 +289,10 @@ public class Login1 extends javax.swing.JFrame {
     private javax.swing.JToggleButton btn_crear;
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JButton btn_olvido;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JCheckBox jcb_recordar;
+    private javax.swing.JLabel lbl_erroneoContraseña;
+    private javax.swing.JLabel lbl_erroneoUsuario;
     private javax.swing.JTextField txt_contra;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables

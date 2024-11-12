@@ -70,7 +70,7 @@ public class TablaCuenta {
         return Listacu;
     }
     
-  
+  //Elinar en la base de datos
     public boolean ElimarCuenta(String nom){
         String sql="DELETE FROM cuentas WHERE Nombre = ?";
         try{
