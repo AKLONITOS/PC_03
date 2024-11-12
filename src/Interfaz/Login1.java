@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -12,14 +13,13 @@ import javax.swing.event.DocumentListener;
  * @author LAB-USR-SJL
  */
 public class Login1 extends javax.swing.JFrame {
+    int i;
 
     /**
      * Creates new form Login
      */
     public Login1() {
         initComponents();
-        
-        
     }
 
     /**
@@ -81,6 +81,16 @@ public class Login1 extends javax.swing.JFrame {
         jcb_recordar.setText("RECORDAR CONTRASEÑA");
 
         btn_ingresar.setText("INGRESAR");
+        btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ingresarMouseClicked(evt);
+            }
+        });
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarActionPerformed(evt);
+            }
+        });
 
         btn_olvido.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         btn_olvido.setText("¿Olvidó su contraseña?");
@@ -187,6 +197,32 @@ public class Login1 extends javax.swing.JFrame {
             txt_contra.setText("CONTRASEÑA");
         }
     }//GEN-LAST:event_txt_contraFocusLost
+
+    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ingresarActionPerformed
+
+    private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
+        // TODO add your handling code here:
+        String usuario = "Administrador";
+        String contra = "123456";
+        
+        String Pass=new String(txt_contra.getText());
+        
+        if(txt_usuario.getText().equals(usuario)&& Pass.equals(contra)){
+            Menu abrir =new Menu();
+            abrir.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario / Contraseña incorrecta ("+i+")");
+            txt_usuario.setText("USUARIO");
+            txt_contra.setText("CONTRASEÑA");
+            i++;
+        }
+        if (i>=4){
+            dispose();
+        }
+    }//GEN-LAST:event_btn_ingresarMouseClicked
 
         private void actualizarBoton() {
             
