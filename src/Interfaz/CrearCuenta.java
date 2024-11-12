@@ -31,13 +31,8 @@ public class CrearCuenta extends javax.swing.JFrame {
         
         generarUsuarioYClave();
         setLocationRelativeTo(null);
-         b_activo = new JRadioButton("Activo");
-    b_inactivo = new JRadioButton("Inactivo");
-
-    // Crear grupo de botones de radio
-    btg_estado = new ButtonGroup();
-    btg_estado.add(b_activo);
-    btg_estado.add(b_inactivo);
+        btg_estado.add(b_activo);
+        btg_estado.add(b_inactivo);
     }
     public void llenarCampos(String nombre, String apellido, String dni, String usuario, String clave, String correo, String estado, String rol, byte[] fotoBytes) {
         txt_nombre.setText(nombre);
