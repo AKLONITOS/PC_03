@@ -7,6 +7,9 @@
 # BlueJ files
 *.ctxt
 
+git rm --cached private.xml 
+git add -u .
+git commit -m "Record deletion of private.xml from the index"
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
