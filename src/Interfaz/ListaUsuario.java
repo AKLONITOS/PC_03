@@ -4,14 +4,19 @@ import Clases.Cuenta;
 import FuncionamientoTablas.TablaCuenta;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import javax.swing.table.DefaultTableModel;
 
 public class ListaUsuario extends javax.swing.JFrame {
     private static ListaUsuario instance = null;
     CrearCuenta pro=new CrearCuenta();
     TablaCuenta proDao=new TablaCuenta();
-    DefaultTableModel modelo = new DefaultTableModel();  
+    Cuenta CU=new Cuenta();
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    
 
     public ListaUsuario() {
         initComponents();
@@ -56,8 +61,10 @@ public class ListaUsuario extends javax.swing.JFrame {
             tb_ListaUsuario.getColumnModel().getColumn(8).setPreferredWidth(0);  // Ocultar columna de foto (índice 8)
             tb_ListaUsuario.getTableHeader().getColumnModel().getColumn(8).setMaxWidth(0);
             modelo.addRow(ob);
+            
         }
         tb_ListaUsuario.setModel(modelo);
+        
 
     }
     public void LimpiarTabla(){
@@ -78,6 +85,8 @@ public class ListaUsuario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_ListaUsuario = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        btn_Eliminar = new javax.swing.JButton();
+        txt_nombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,18 +112,33 @@ public class ListaUsuario extends javax.swing.JFrame {
             }
         });
 
+        btn_Eliminar.setText("Eliminar");
+        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarActionPerformed(evt);
+            }
+        });
+
+        txt_nombre.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(btn_Eliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(216, 216, 216)
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +146,10 @@ public class ListaUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btn_Eliminar)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -143,8 +170,18 @@ public class ListaUsuario extends javax.swing.JFrame {
         String estado = tb_ListaUsuario.getValueAt(fila, 6).toString();
         String rol = tb_ListaUsuario.getValueAt(fila, 7).toString();
         byte[] fotoBytes = (byte[]) tb_ListaUsuario.getValueAt(fila, 8);
+        txt_nombre.setText(nombre);
         if (pro == null) {
             pro = new CrearCuenta();
+        }
+        if (fila >= 0) {
+
+        if (!pro.isVisible()) {
+            pro.setVisible(true);
+            
+        }
+        int selectedRow = tb_ListaUsuario.getSelectedRow();
+    
         }
 
         pro.llenarCampos(nombre, apellido, dni, usuario, clave, correo, estado, rol, fotoBytes);
@@ -161,6 +198,20 @@ public class ListaUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
+        // TODO add your handling code here:
+       if(!"".equals(txt_nombre.getText())){
+            int pregunta=JOptionPane.showConfirmDialog(null, "ESTA SEGURO QUE QUIERES ELIMINAR");
+            if(pregunta==0){
+                
+                proDao.ElimarCuenta(txt_nombre.getText());
+                ListaUsuarios1();
+                
+                
+            }
+        }
+    }//GEN-LAST:event_btn_EliminarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -169,10 +220,17 @@ public class ListaUsuario extends javax.swing.JFrame {
             }
         });
     }
+    
+        
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_ListaUsuario;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

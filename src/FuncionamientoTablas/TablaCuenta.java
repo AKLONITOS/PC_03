@@ -70,7 +70,25 @@ public class TablaCuenta {
         return Listacu;
     }
     
-    
-    
-
+  
+    public boolean ElimarCuenta(String nom){
+        String sql="DELETE FROM cuentas WHERE Nombre = ?";
+        try{
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nom);
+            ps.execute();
+            return true;
+        }catch (SQLException e){
+            System.out.println(e.toString());
+            return false;
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException ex){
+                System.out.println(ex.toString());
+            }
+        }
+        
+    }
 }

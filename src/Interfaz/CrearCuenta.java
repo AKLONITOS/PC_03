@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class CrearCuenta extends javax.swing.JFrame {
     Cuenta pro=new Cuenta();
     TablaCuenta proDao=new TablaCuenta();
-    
+    private String nombreUsuario;
 
     public CrearCuenta() {
         initComponents();
@@ -34,7 +34,10 @@ public class CrearCuenta extends javax.swing.JFrame {
         btg_estado.add(b_activo);
         btg_estado.add(b_inactivo);
     }
+    
+    
     public void llenarCampos(String nombre, String apellido, String dni, String usuario, String clave, String correo, String estado, String rol, byte[] fotoBytes) {
+        
         txt_nombre.setText(nombre);
         txt_apellido.setText(apellido);
         txt_dni.setText(dni);
@@ -174,6 +177,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, -1));
 
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOTON ELIMINAR.jpg"))); // NOI18N
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 140, 40));
 
         btn_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOTONES.jpg"))); // NOI18N
@@ -318,6 +326,10 @@ public class CrearCuenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_fotoActionPerformed
 
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -326,6 +338,17 @@ public class CrearCuenta extends javax.swing.JFrame {
             }
         });
     }
+    private void Limpiar(){
+        txt_nombre.setText("");
+        txt_apellido.setText("");
+        txt_dni.setText("");
+        txt_correo.setText("");
+        txt_usuario.setText("");
+        txt_foto.setText("");
+        
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CB_ROL;
