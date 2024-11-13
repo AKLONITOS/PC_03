@@ -289,22 +289,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-    /*    // TODO add your handling code here:
-        pro.setNombre(txt_nombre.getText());
-    pro.setApellido(txt_apellido.getText());
-    pro.setDni(Integer.parseInt(txt_dni.getText()));
-    pro.setUsuario(txt_usuario.getText());
-    pro.setClave(txt_clave.getText());
-    pro.setCorreo(txt_correo.getText());
-    pro.setEstado(b_activo.isSelected() ? "Activo" : "Inactivo");
-    pro.setRol(CB_ROL.getSelectedItem().toString());
-    //pro.setFoto(fotoBytes); // Suponiendo que `fotoBytes` es el arreglo de bytes de la foto
 
-    // Llamar al método EditarCuenta en proDao
-    proDao.EditarCuenta(pro);
-
-    // Actualizar la tabla en el otro JFrame
-    ListaUsuario.getInstance().ListaUsuarios1();*/
         if ("".equals(txt_nombre.getText())) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
         } else {
@@ -346,6 +331,7 @@ public class CrearCuenta extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "CUENTA EDITADA");
            //vincular con la tabla que esta en el otro Jframe
            ListaUsuario.getInstance().ListaUsuarios1();
+           Limpiar();
             
             
         }
