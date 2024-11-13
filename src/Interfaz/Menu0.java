@@ -4,17 +4,49 @@
  */
 package Interfaz;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author USUARIO
  */
 public class Menu0 extends javax.swing.JFrame {
+    
+    private CardLayout cardLayout;
 
     /**
      * Creates new form Seccion1
      */
     public Menu0() {
         initComponents();
+        setupCardLayout();
+    }
+    
+    private void setupCardLayout() {
+        cardLayout = new CardLayout();
+        jPanel2.setLayout(cardLayout);
+        
+        // Creación de diferentes paneles
+        JPanel panel1 = new JPanel();
+        panel1.add(new javax.swing.JLabel("Panel 1 - Inicio"));
+        
+        JPanel panel2 = new JPanel();
+        panel2.add(new javax.swing.JLabel("Panel 2 - Mis ordenes"));
+        
+        JPanel panel3 = new JPanel();
+        panel3.add(new javax.swing.JLabel("Panel 3 - Mis vales"));
+
+        // Agregar paneles a jPanel2 con nombres específicos para CardLayout
+        jPanel2.add(panel1, "Inicio");
+        jPanel2.add(panel2, "Mis ordenes");
+        jPanel2.add(panel3, "Mis vales");
+
+        // Configurar la acción de jComboBox para cambiar de panel
+        jComboBox1.addActionListener(e -> {
+            String selectedPanel = (String) jComboBox1.getSelectedItem();
+            cardLayout.show(jPanel2, selectedPanel);
+        });
     }
 
     /**
@@ -87,6 +119,11 @@ public class Menu0 extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 88, 68));
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 86, 68));
 
         jLabel2.setText("VENTA");
@@ -143,6 +180,10 @@ public class Menu0 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
