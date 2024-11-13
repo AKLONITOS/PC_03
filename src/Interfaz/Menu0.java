@@ -25,7 +25,7 @@ public class Menu0 extends javax.swing.JFrame {
     
     private void setupCardLayout() {
         cardLayout = new CardLayout();
-        jPanel2.setLayout(cardLayout);
+        jPanel.setLayout(cardLayout);
         
         // Creación de diferentes paneles
         JPanel panel1 = new JPanel();
@@ -38,14 +38,14 @@ public class Menu0 extends javax.swing.JFrame {
         panel3.add(new javax.swing.JLabel("Panel 3 - Mis vales"));
 
         // Agregar paneles a jPanel2 con nombres específicos para CardLayout
-        jPanel2.add(panel1, "Inicio");
-        jPanel2.add(panel2, "Mis ordenes");
-        jPanel2.add(panel3, "Mis vales");
+        jPanel.add(panel1, "Inicio");
+        jPanel.add(panel2, "Mis ordenes");
+        jPanel.add(panel3, "Mis vales");
 
         // Configurar la acción de jComboBox para cambiar de panel
         jComboBox1.addActionListener(e -> {
             String selectedPanel = (String) jComboBox1.getSelectedItem();
-            cardLayout.show(jPanel2, selectedPanel);
+            cardLayout.show(jPanel, selectedPanel);
         });
     }
 
@@ -73,7 +73,7 @@ public class Menu0 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,18 +144,18 @@ public class Menu0 extends javax.swing.JFrame {
         jLabel5.setText("CONSULTAS");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 350, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 150, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 350, 150));
+        jPanel3.add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 350, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,8 +234,8 @@ public class Menu0 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
