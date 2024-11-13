@@ -8,12 +8,12 @@ package Interfaz;
  *
  * @author EDU
  */
-public class Mantenimiento extends javax.swing.JPanel {
+public class Producto extends javax.swing.JPanel {
 
     /**
      * Creates new form Mantenimiento
      */
-    public Mantenimiento() {
+    public Producto() {
         initComponents();
     }
 
@@ -38,14 +38,14 @@ public class Mantenimiento extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(557, 557, 557)
                 .addComponent(jLabel1)
-                .addContainerGap(603, Short.MAX_VALUE))
+                .addContainerGap(1003, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jLabel1)
-                .addContainerGap(1733, Short.MAX_VALUE))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

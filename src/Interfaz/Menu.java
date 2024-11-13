@@ -18,8 +18,8 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
-        Mantenimiento p1= new Mantenimiento() ;
-        p1.setSize(1420, 950);
+        Home p1= new Home() ;
+        p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p1, BorderLayout.CENTER);
@@ -37,9 +37,16 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         PestañadeVinculacion = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        compra = new javax.swing.JButton();
-        otracosa = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnInicio = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,76 +57,89 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.setLayout(PestañadeVinculacionLayout);
         PestañadeVinculacionLayout.setHorizontalGroup(
             PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1418, Short.MAX_VALUE)
+            .addGap(0, 1818, Short.MAX_VALUE)
         );
         PestañadeVinculacionLayout.setVerticalGroup(
             PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 858, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PestañadeVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 69, 1420, 860));
+        getContentPane().add(PestañadeVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1820, 770));
 
-        jButton1.setText("mantenimiento");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("numero de compra");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1720, 40, -1, -1));
+
+        jLabel2.setText("hora");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 50, -1, -1));
+
+        jLabel3.setText("usuario");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 50, -1, -1));
+
+        jMenu1.setText("Home");
+
+        btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInicioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 180, 60));
+        jMenu1.add(btnInicio);
 
-        compra.setText("compra");
-        compra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Mantenimiento");
+
+        jMenuItem1.setText("Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compraActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        getContentPane().add(compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, 60));
+        jMenu2.add(jMenuItem1);
 
-        otracosa.setText("otra cosa mas");
-        otracosa.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Productos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                otracosaActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        getContentPane().add(otracosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 180, 50));
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Cliente");
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        Mantenimiento p1= new Mantenimiento() ;
-        p1.setSize(1420, 950);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+        Home p1= new Home() ;
+        p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p1, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        compra p2= new compra();
-        p2.setSize(1420, 950);
-        p2.setLocation(0,0);
-        PestañadeVinculacion.removeAll();
-        PestañadeVinculacion.add(p2, BorderLayout.CENTER);
-        PestañadeVinculacion.revalidate();
-        PestañadeVinculacion.repaint();
-    }//GEN-LAST:event_compraActionPerformed
-
-    private void otracosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otracosaActionPerformed
-        // TODO add your handling code here:
-        otracosa p3= new otracosa();
-        p3.setSize(1420, 950);
+        Producto p3= new Producto() ;
+        p3.setSize(1820, 770);
         p3.setLocation(0,0);
-        
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p3, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
-    }//GEN-LAST:event_otracosaActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +178,15 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PestañadeVinculacion;
-    private javax.swing.JButton compra;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton otracosa;
+    private javax.swing.JMenuItem btnInicio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
