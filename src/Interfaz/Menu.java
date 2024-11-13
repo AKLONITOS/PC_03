@@ -4,9 +4,11 @@
  */
 package Interfaz;
 
+import java.awt.BorderLayout;
+
 /**
  *
- * @author EQUIPO
+ * @author EDU
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -15,6 +17,14 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        setLocationRelativeTo(null);
+        Mantenimiento p1= new Mantenimiento() ;
+        p1.setSize(1420, 950);
+        p1.setLocation(0,0);
+        PestañadeVinculacion.removeAll();
+        PestañadeVinculacion.add(p1, BorderLayout.CENTER);
+        PestañadeVinculacion.revalidate();
+        PestañadeVinculacion.repaint();
     }
 
     /**
@@ -26,40 +36,90 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        PestañadeVinculacion = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        compra = new javax.swing.JButton();
+        otracosa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("Menu");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        PestañadeVinculacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout PestañadeVinculacionLayout = new javax.swing.GroupLayout(PestañadeVinculacion);
+        PestañadeVinculacion.setLayout(PestañadeVinculacionLayout);
+        PestañadeVinculacionLayout.setHorizontalGroup(
+            PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1418, Short.MAX_VALUE)
+        );
+        PestañadeVinculacionLayout.setVerticalGroup(
+            PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 858, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PestañadeVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 69, 1420, 860));
+
+        jButton1.setText("mantenimiento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 180, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
-        );
+        compra.setText("compra");
+        compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, 60));
+
+        otracosa.setText("otra cosa mas");
+        otracosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otracosaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(otracosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 180, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        Mantenimiento p1= new Mantenimiento() ;
+        p1.setSize(1420, 950);
+        p1.setLocation(0,0);
+        PestañadeVinculacion.removeAll();
+        PestañadeVinculacion.add(p1, BorderLayout.CENTER);
+        PestañadeVinculacion.revalidate();
+        PestañadeVinculacion.repaint();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraActionPerformed
+        // TODO add your handling code here:
+        compra p2= new compra();
+        p2.setSize(1420, 950);
+        p2.setLocation(0,0);
+        PestañadeVinculacion.removeAll();
+        PestañadeVinculacion.add(p2, BorderLayout.CENTER);
+        PestañadeVinculacion.revalidate();
+        PestañadeVinculacion.repaint();
+    }//GEN-LAST:event_compraActionPerformed
+
+    private void otracosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otracosaActionPerformed
+        // TODO add your handling code here:
+        otracosa p3= new otracosa();
+        p3.setSize(1420, 950);
+        p3.setLocation(0,0);
+        
+        PestañadeVinculacion.removeAll();
+        PestañadeVinculacion.add(p3, BorderLayout.CENTER);
+        PestañadeVinculacion.revalidate();
+        PestañadeVinculacion.repaint();
+    }//GEN-LAST:event_otracosaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +157,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel PestañadeVinculacion;
+    private javax.swing.JButton compra;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton otracosa;
     // End of variables declaration//GEN-END:variables
 }
