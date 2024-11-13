@@ -126,5 +126,47 @@ public class TablaCuenta {
         }
     }
     
+    public List<Cuenta> listaDeUsuariosYClaves() {
+    List<Cuenta> listaCuentas = new ArrayList<>();
+    String sql = "SELECT Usuario, Clave FROM cuentas";
+    
+    try (Connection con = cn.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+            Cuenta cuenta = new Cuenta();
+            cuenta.setUsuario(rs.getString("Usuario"));
+            cuenta.setClave(rs.getString("Clave"));
+            listaCuentas.add(cuenta);
+        }
+    } catch (Exception e) {
+        System.out.println("Error: " + e.toString());
+    }
+    
+    return listaCuentas;
+    }
+    
+    public List<Cuenta> obtenerUsuariosYRoles() {
+        List<Cuenta> listaCuentas = new ArrayList<>();
+        String sql = "SELECT Usuario, Rol FROM cuentas";
+        
+        try (Connection con = cn.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Cuenta cuenta = new Cuenta();
+                cuenta.setUsuario(rs.getString("Usuario"));
+                cuenta.setRol(rs.getString("Rol"));
+                listaCuentas.add(cuenta);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener usuarios y roles: " + e.getMessage());
+        }
+        
+        return listaCuentas;
+    }
+    
     
 }
