@@ -235,6 +235,9 @@
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Menu0_jPanel"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">

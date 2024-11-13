@@ -38,11 +38,11 @@ public class Menu extends javax.swing.JFrame {
 
         PestañadeVinculacion = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        compra = new javax.swing.JButton();
-        otracosa = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_generarorden = new javax.swing.JButton();
+        btn_report = new javax.swing.JButton();
+        btn_venta = new javax.swing.JButton();
+        btn_consultas = new javax.swing.JButton();
+        btn_mantenimiento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,45 +70,45 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 180, 60));
 
-        compra.setText("GENERAR ORDEN");
-        compra.addActionListener(new java.awt.event.ActionListener() {
+        btn_generarorden.setText("GENERAR ORDEN");
+        btn_generarorden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compraActionPerformed(evt);
+                btn_generarordenActionPerformed(evt);
             }
         });
-        getContentPane().add(compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 180, 60));
+        getContentPane().add(btn_generarorden, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 180, 60));
 
-        otracosa.setText("REPORTE");
-        otracosa.addActionListener(new java.awt.event.ActionListener() {
+        btn_report.setText("REPORTE");
+        btn_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                otracosaActionPerformed(evt);
+                btn_reportActionPerformed(evt);
             }
         });
-        getContentPane().add(otracosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 60));
+        getContentPane().add(btn_report, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 60));
 
-        jButton2.setText("VENTA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_venta.setText("VENTA");
+        btn_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_ventaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 180, 60));
+        getContentPane().add(btn_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 180, 60));
 
-        jButton3.setText("CONSULTAS");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_consultas.setText("CONSULTAS");
+        btn_consultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_consultasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 180, 60));
+        getContentPane().add(btn_consultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 180, 60));
 
-        jButton4.setText("MANTENIMIENTO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_mantenimiento.setText("MANTENIMIENTO");
+        btn_mantenimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_mantenimientoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 180, 60));
+        getContentPane().add(btn_mantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 180, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,7 +125,7 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraActionPerformed
+    private void btn_generarordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarordenActionPerformed
         // TODO add your handling code here:
         compra p2= new compra();
         p2.setSize(1420, 950);
@@ -134,9 +134,9 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.add(p2, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
-    }//GEN-LAST:event_compraActionPerformed
+    }//GEN-LAST:event_btn_generarordenActionPerformed
 
-    private void otracosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otracosaActionPerformed
+    private void btn_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportActionPerformed
         // TODO add your handling code here:
         otracosa p3= new otracosa();
         p3.setSize(1420, 950);
@@ -146,19 +146,19 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.add(p3, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
-    }//GEN-LAST:event_otracosaActionPerformed
+    }//GEN-LAST:event_btn_reportActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_ventaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_consultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_consultasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_mantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_mantenimientoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,11 +197,11 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PestañadeVinculacion;
-    private javax.swing.JButton compra;
+    private javax.swing.JButton btn_consultas;
+    private javax.swing.JButton btn_generarorden;
+    private javax.swing.JButton btn_mantenimiento;
+    private javax.swing.JButton btn_report;
+    private javax.swing.JButton btn_venta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton otracosa;
     // End of variables declaration//GEN-END:variables
 }

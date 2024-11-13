@@ -8,12 +8,12 @@ package Interfaz;
  *
  * @author EDU
  */
-public class otracosa extends javax.swing.JPanel {
+public class Venta extends javax.swing.JPanel {
 
     /**
      * Creates new form otracosa
      */
-    public otracosa() {
+    public Venta() {
         initComponents();
     }
 
