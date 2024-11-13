@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -25,6 +27,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     Cuenta pro=new Cuenta();
     TablaCuenta proDao=new TablaCuenta();
     private String nombreUsuario;
+    
 
     public CrearCuenta() {
         initComponents();
@@ -276,6 +279,7 @@ public class CrearCuenta extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "CUENTA AGREGADO");
            //vincular con la tabla que esta en el otro Jframe
            ListaUsuario.getInstance().ListaUsuarios1();
+           Limpiar();
            }else{
             JOptionPane.showMessageDialog(null, "ESTAN VACIOS,PORFAVOR COMPLETAR TODO LOS CASILLEROS");
             
@@ -285,7 +289,66 @@ public class CrearCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        // TODO add your handling code here:
+    /*    // TODO add your handling code here:
+        pro.setNombre(txt_nombre.getText());
+    pro.setApellido(txt_apellido.getText());
+    pro.setDni(Integer.parseInt(txt_dni.getText()));
+    pro.setUsuario(txt_usuario.getText());
+    pro.setClave(txt_clave.getText());
+    pro.setCorreo(txt_correo.getText());
+    pro.setEstado(b_activo.isSelected() ? "Activo" : "Inactivo");
+    pro.setRol(CB_ROL.getSelectedItem().toString());
+    //pro.setFoto(fotoBytes); // Suponiendo que `fotoBytes` es el arreglo de bytes de la foto
+
+    // Llamar al método EditarCuenta en proDao
+    proDao.EditarCuenta(pro);
+
+    // Actualizar la tabla en el otro JFrame
+    ListaUsuario.getInstance().ListaUsuarios1();*/
+        if ("".equals(txt_nombre.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            pro.setNombre(txt_nombre.getText());
+            pro.setApellido(txt_apellido.getText());
+            pro.setDni(Integer.parseInt(txt_dni.getText()));
+            pro.setCorreo(txt_correo.getText());
+            //botones
+           btg_estado.add(b_activo);
+           btg_estado.add(b_inactivo);
+           String estado = "Activo";
+           if (b_activo.isSelected()) {
+               estado = "Activo";
+            } else {
+               if (b_inactivo.isSelected()) {
+                   estado = "Inactivo";
+                           }
+           }
+           pro.setEstado(estado);
+           //para el rol
+           String rolSeleccionado = (String) CB_ROL.getSelectedItem();
+           pro.setRol(rolSeleccionado);
+           //para agregar la foto
+           String rutaFoto = txt_foto.getText(); 
+           File file = new File(rutaFoto); 
+
+           if (file.exists()) {
+               try (FileInputStream fis = new FileInputStream(file)) {
+                   byte[] fotoBytes = new byte[(int) file.length()];
+                   fis.read(fotoBytes);
+                   pro.setFoto(fotoBytes);
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "Archivo no encontrado");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al leer el archivo de imagen");
+                    }
+               }
+           proDao.EditarCuenta(pro);
+           JOptionPane.showMessageDialog(null, "CUENTA EDITADA");
+           //vincular con la tabla que esta en el otro Jframe
+           ListaUsuario.getInstance().ListaUsuarios1();
+            
+            
+        }
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_ListaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaUsuarioActionPerformed
@@ -342,8 +405,13 @@ public class CrearCuenta extends javax.swing.JFrame {
         txt_nombre.setText("");
         txt_apellido.setText("");
         txt_dni.setText("");
+        String usuarioAleatorio = Generador.generarUsuario();
+        String claveAleatoria = Generador.generarClave();
+        pro.setUsuario(usuarioAleatorio);
+        pro.setClave(claveAleatoria);
+        txt_usuario.setText(usuarioAleatorio);
+        txt_clave.setText(claveAleatoria);
         txt_correo.setText("");
-        txt_usuario.setText("");
         txt_foto.setText("");
         
     }
