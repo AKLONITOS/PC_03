@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         PestañadeVinculacion = new javax.swing.JPanel();
+
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,6 +48,14 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+
+        jButton1 = new javax.swing.JButton();
+        btn_generarorden = new javax.swing.JButton();
+        btn_report = new javax.swing.JButton();
+        btn_venta = new javax.swing.JButton();
+        btn_consultas = new javax.swing.JButton();
+        btn_mantenimiento = new javax.swing.JButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,6 +70,7 @@ public class Menu extends javax.swing.JFrame {
         );
         PestañadeVinculacionLayout.setVerticalGroup(
             PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGap(0, 768, Short.MAX_VALUE)
         );
 
@@ -79,10 +89,20 @@ public class Menu extends javax.swing.JFrame {
 
         btnInicio.setText("Inicio");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
+
+            .addGap(0, 798, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PestañadeVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 129, 1420, 800));
+
+        jButton1.setText("MENU");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
+
         jMenu1.add(btnInicio);
 
         jMenuBar1.add(jMenu1);
@@ -112,6 +132,49 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 180, 60));
+
+        btn_generarorden.setText("GENERAR ORDEN");
+        btn_generarorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_generarordenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_generarorden, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 180, 60));
+
+        btn_report.setText("REPORTE");
+        btn_report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reportActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_report, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 60));
+
+        btn_venta.setText("VENTA");
+        btn_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ventaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 180, 60));
+
+        btn_consultas.setText("CONSULTAS");
+        btn_consultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_consultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 180, 60));
+
+        btn_mantenimiento.setText("MANTENIMIENTO");
+        btn_mantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_mantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 180, 60));
+
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,16 +193,50 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.repaint();
     }//GEN-LAST:event_btnInicioActionPerformed
 
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         Producto p3= new Producto() ;
         p3.setSize(1820, 770);
+
+    private void btn_generarordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarordenActionPerformed
+        // TODO add your handling code here:
+        compra p2= new compra();
+        p2.setSize(1420, 950);
+        p2.setLocation(0,0);
+        PestañadeVinculacion.removeAll();
+        PestañadeVinculacion.add(p2, BorderLayout.CENTER);
+        PestañadeVinculacion.revalidate();
+        PestañadeVinculacion.repaint();
+    }//GEN-LAST:event_btn_generarordenActionPerformed
+
+    private void btn_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportActionPerformed
+        // TODO add your handling code here:
+        otracosa p3= new otracosa();
+        p3.setSize(1420, 950);
+
         p3.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p3, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    }//GEN-LAST:event_btn_reportActionPerformed
+
+    private void btn_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ventaActionPerformed
+
+    private void btn_consultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_consultasActionPerformed
+
+    private void btn_mantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_mantenimientoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -178,6 +275,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PestañadeVinculacion;
+
     private javax.swing.JMenuItem btnInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -188,5 +286,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+
+    private javax.swing.JButton btn_consultas;
+    private javax.swing.JButton btn_generarorden;
+    private javax.swing.JButton btn_mantenimiento;
+    private javax.swing.JButton btn_report;
+    private javax.swing.JButton btn_venta;
+    private javax.swing.JButton jButton1;
+
     // End of variables declaration//GEN-END:variables
 }
