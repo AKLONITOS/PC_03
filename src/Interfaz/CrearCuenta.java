@@ -188,6 +188,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 140, 40));
 
         btn_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOTONES.jpg"))); // NOI18N
+        btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, 40));
 
         btn_ListaUsuario.setText("Lista Usuario");
@@ -378,6 +383,10 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_nuevoActionPerformed
 
     public static void main(String args[]) {
 
