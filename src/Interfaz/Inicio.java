@@ -5,6 +5,7 @@
 package Interfaz;
 
 import java.awt.BorderLayout;
+import Interfaz.Menu;
 
 /**
  *
@@ -15,6 +16,8 @@ public class Inicio extends javax.swing.JPanel {
     
     public Inicio() {
         initComponents();
+        
+        
     }
 
     /**
@@ -29,34 +32,50 @@ public class Inicio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btn_Venta = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        PestañaVinculacion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel1.setText("Publicidad");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 90, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
-        btn_Venta.setText("venta");
+        btn_Venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
         btn_Venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_VentaActionPerformed(evt);
             }
         });
-        add(btn_Venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+        add(btn_Venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 130, 120));
 
         jButton2.setText("consulta");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+        add(PestañaVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 1150, 610));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        jLabel2.setText("VENTA");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_VentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VentaActionPerformed
         // TODO add your handling code here:
+        Venta ven = new Venta ();
+        ven.setSize(1420,950);
+        ven.setLocation(0,0);
+        PestañaVinculacion.removeAll();
+        PestañaVinculacion.add(ven, BorderLayout.CENTER);
+        PestañaVinculacion.revalidate();
+        PestañaVinculacion.repaint();
         
     }//GEN-LAST:event_btn_VentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PestañaVinculacion;
     private javax.swing.JButton btn_Venta;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

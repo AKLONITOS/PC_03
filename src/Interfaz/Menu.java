@@ -26,6 +26,9 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.add(p1, BorderLayout.CENTER);
         PestañadeVinculacion.revalidate();
         PestañadeVinculacion.repaint();
+        
+        
+        
     }
    
 
