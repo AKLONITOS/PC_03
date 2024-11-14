@@ -19,8 +19,9 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
+        
         Inicio p1= new Inicio() ;
-        p1.setSize(1420, 950);
+        p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p1, BorderLayout.CENTER);
@@ -28,6 +29,10 @@ public class Menu extends javax.swing.JFrame {
         PestañadeVinculacion.repaint();
         
         
+        
+    }
+    private void cargarPanelInicio() {
+        Inicio p1 = new Inicio();
         
     }
    
@@ -118,7 +123,7 @@ public class Menu extends javax.swing.JFrame {
     private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
         // TODO add your handling code here:
         Inicio p1= new Inicio() ;
-        p1.setSize(1420, 950);
+        p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p1, BorderLayout.CENTER);
@@ -129,7 +134,7 @@ public class Menu extends javax.swing.JFrame {
     private void btn_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ProductosActionPerformed
         // TODO add your handling code here:
         Productos p2= new Productos() ;
-        p2.setSize(1420, 950);
+        p2.setSize(1820, 770);
         p2.setLocation(0,0);
         PestañadeVinculacion.removeAll();
         PestañadeVinculacion.add(p2, BorderLayout.CENTER);
@@ -168,6 +173,7 @@ public class Menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu().setVisible(true);
+                
             }
         });
     }

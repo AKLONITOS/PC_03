@@ -4,6 +4,11 @@
  */
 package Interfaz;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
 /**
  *
  * @author EDU
@@ -15,6 +20,19 @@ public class Presentacion extends javax.swing.JFrame {
      */
     public Presentacion() {
         initComponents();
+        setLocationRelativeTo(null);
+        Timer timer = new Timer(20000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Pasando a Cuenta");
+                Login cuenta = new Login();
+                cuenta.setVisible(true); 
+                 
+                 dispose();
+            }
+        });
+        timer.setRepeats(false); 
+        timer.start(); 
     }
 
     /**
@@ -83,7 +101,9 @@ public class Presentacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Presentacion().setVisible(true);
+                SwingUtilities.invokeLater(() -> {
+            new Presentacion().setVisible(true);
+        });
             }
         });
     }

@@ -110,6 +110,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         Panel = new javax.swing.JPanel();
         b_inactivo = new javax.swing.JRadioButton();
         b_activo = new javax.swing.JRadioButton();
+        btn_cerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,6 +240,14 @@ public class CrearCuenta extends javax.swing.JFrame {
         );
 
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 160, 40));
+
+        btn_cerrar.setText("CERRAR");
+        btn_cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -388,6 +397,14 @@ public class CrearCuenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
+    private void btn_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarActionPerformed
+        // TODO add your handling code here:
+        Login abrir =new Login();
+        abrir.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btn_cerrarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -421,6 +438,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btg_estado;
     private javax.swing.JButton btn_ListaUsuario;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_cerrar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_foto;

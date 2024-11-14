@@ -24,7 +24,7 @@ public class TablaCuenta {
     //Agregar cuenta    
     String sql = "INSERT INTO cuentas (Nombre , Apellido , DNI , Usuario , Clave , Correo , Estado , Rol , Foto) VALUES (?,?,?,?,?,?,?,?,?)";
     try {
-        FileInputStream archivofoto;
+        
         con = cn.getConnection();
         ps = con.prepareStatement(sql);
         ps.setString(1, CC.getNombre());

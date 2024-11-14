@@ -4,17 +4,34 @@
  */
 package Interfaz;
 
+import Clases.Producto;
+import FuncionamientoTablas.TablaProductos;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author EDU
  */
 public class Productos extends javax.swing.JPanel {
+    Producto pro=new Producto();
+    TablaProductos proDao=new TablaProductos();
+    DefaultTableModel modelo = new DefaultTableModel();
 
-    /**
-     * Creates new form Mantenimiento
-     */
     public Productos() {
         initComponents();
+        Listaproductos();
+        
     }
 
     /**
@@ -27,30 +44,279 @@ public class Productos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        txt_codigo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txt_nombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txt_Stock = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txt_Stockmin = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txt_preciocosto = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txt_precioventa = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txt_color = new javax.swing.JTextField();
+        chb_promocion = new javax.swing.JCheckBox();
+        cb_sexo = new javax.swing.JComboBox<>();
+        cb_talla = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        cb_categoria = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaListaPro = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        txt_fecha1 = new javax.swing.JTextField();
+        btn_agregar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        txt_imagen = new javax.swing.JTextField();
+        imagen = new javax.swing.JLabel();
+        txt_fecha = new com.toedter.calendar.JDateChooser();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Productos");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(557, 557, 557)
-                .addComponent(jLabel1)
-                .addContainerGap(1092, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel1)
-                .addContainerGap(643, Short.MAX_VALUE))
-        );
+        jLabel1.setText("Codigo:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+        add(txt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 240, -1));
+
+        jLabel2.setText("Nombre:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+        add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
+
+        jLabel3.setText("sexo:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+
+        jLabel4.setText("Talla");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+
+        jLabel5.setText("Stock");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        add(txt_Stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 240, -1));
+
+        jLabel6.setText("Stock Minimo");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
+        add(txt_Stockmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 210, -1));
+
+        jLabel7.setText("Precio Costo");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        add(txt_preciocosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 240, -1));
+
+        jLabel8.setText("Precio Venta");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
+        add(txt_precioventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 260, -1));
+
+        jButton1.setText("Examinar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
+
+        jLabel9.setText("Color");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        add(txt_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 220, -1));
+
+        chb_promocion.setText("Promocion");
+        add(chb_promocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+
+        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        add(cb_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+
+        cb_talla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "S", "L", "XXL" }));
+        add(cb_talla, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+
+        jLabel10.setText("Categoria:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        cb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Polos", "Pantalones", "Casacas", "Camisas", "Buzos", "Zapatos" }));
+        add(cb_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
+
+        TablaListaPro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Categoria", "Talla", "Stock", "Stock Minimo", "Precio compra", "Precio Venta", "Imagen", "Color", "Promocion", "Fecha"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaListaPro);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 920, 610));
+
+        jLabel11.setText("Fecha:");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        add(txt_fecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 320, -1));
+
+        btn_agregar.setText("Agregar");
+        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarActionPerformed(evt);
+            }
+        });
+        add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
+
+        jButton3.setText("Editar");
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, -1, -1));
+
+        jButton4.setText("Eliminar");
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, -1, -1));
+
+        jButton5.setText("Nuevo");
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 590, -1, -1));
+
+        txt_imagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_imagenActionPerformed(evt);
+            }
+        });
+        add(txt_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 180, -1));
+
+        imagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 190, 160));
+        add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
+        // TODO add your handling code here:
+        if ("".equals(txt_codigo.getText())|| !"".equals(txt_nombre.getText())|| !"".equals(txt_Stock.getText())|| !"".equals(txt_Stockmin.getText())
+                || !"".equals(txt_preciocosto.getText())|| !"".equals(txt_precioventa.getText())|| !"".equals(txt_color.getText())|| !"".equals(txt_imagen.getText())) {
+           pro.setCodigo(txt_codigo.getText());
+           pro.setNombre(txt_nombre.getText());
+           String selecionCategoria = (String) cb_categoria.getSelectedItem();
+           pro.setCategoria(selecionCategoria);
+           String seleciontalla = (String) cb_talla.getSelectedItem();
+           pro.setTalla(seleciontalla);
+           pro.setStock(Integer.parseInt(txt_Stock.getText()));
+           pro.setStockmin(Integer.parseInt(txt_Stockmin.getText()));
+           pro.setPreciocom(Double.parseDouble(txt_preciocosto.getText()));
+           pro.setPreciovent(Double.parseDouble(txt_precioventa.getText()));
+           String rutaimagen = txt_imagen.getText(); 
+           File file = new File(rutaimagen); 
+
+           if (file.exists()) {
+               try (FileInputStream fis = new FileInputStream(file)) {
+                   byte[] fotoBytes = new byte[(int) file.length()];
+                   fis.read(fotoBytes);
+                   pro.setImagen(fotoBytes);
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "Archivo no encontrado");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al leer el archivo de imagen");
+                    }
+               
+           }
+           pro.setColor((txt_color.getText()));
+           pro.setPromocion(chb_promocion.isSelected());
+           java.util.Date fecha = txt_fecha.getDate(); 
+           if (fecha != null) {
+               SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+               String fechaString = sdf.format(fecha); 
+               pro.setFecha(fechaString);
+           }
+           //pro.setFecha(txt_fecha.getDateFormatString());
+           proDao.AgregarProductos(pro);
+           JOptionPane.showMessageDialog(null, "PRODUCTO AGREGADO");
+           LimpiarTabla();
+           Listaproductos();
+           //Limpiarproductos();
+          
+        }else{
+            JOptionPane.showMessageDialog(null, "ESTAN VACIOS");
+            
+        }
+    }//GEN-LAST:event_btn_agregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FileNameExtensionFilter filtro=new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;.*JPEG)","jpg","jpeg");
+        JFileChooser archivo=new JFileChooser();
+        archivo.addChoosableFileFilter(filtro);
+        archivo.setDialogTitle("Abrir Archivo");
+        File ruta= new File("D:/");//para que aparesca la ruta
+        archivo.setCurrentDirectory(ruta);
+        
+        int ventana =archivo.showOpenDialog(null);
+        if (ventana== JFileChooser.APPROVE_OPTION) {
+            File file=archivo.getSelectedFile();
+            txt_imagen.setText(String.valueOf(file));
+            Image foto=getToolkit().createImage(txt_imagen.getText());
+            foto=foto.getScaledInstance(110, 110, Image.SCALE_DEFAULT);
+            imagen.setIcon(new ImageIcon(foto));
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txt_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_imagenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_imagenActionPerformed
+public void Listaproductos() {
+        List<Producto> Listapro = proDao.ListadeProductos();
+        modelo = (DefaultTableModel) TablaListaPro.getModel();
+        Object[] ob = new Object[12];
+        for (int i = 0; i < Listapro.size(); i++) {
+            ob[0] = Listapro.get(i).getCodigo();
+            ob[1] = Listapro.get(i).getNombre();
+            ob[2] = Listapro.get(i).getCategoria();
+            ob[3] = Listapro.get(i).getTalla();
+            ob[4] = Listapro.get(i).getStock();
+            ob[5] = Listapro.get(i).getStockmin();
+            ob[6] = Listapro.get(i).getPreciocom();
+            ob[7] = Listapro.get(i).getPreciovent();
+            ob[8] = Listapro.get(i).getImagen();
+            ob[9] = Listapro.get(i).getColor();
+            ob[10] = Listapro.get(i).isPromocion();
+            ob[11] = Listapro.get(i).getFecha();
+            modelo.addRow(ob);
+        }
+        TablaListaPro.setModel(modelo);
+
+    }
+    public void LimpiarTabla(){
+        for (int i = 0; i < TablaListaPro.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i=i-1;
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaListaPro;
+    private javax.swing.JButton btn_agregar;
+    private javax.swing.JComboBox<String> cb_categoria;
+    private javax.swing.JComboBox<String> cb_sexo;
+    private javax.swing.JComboBox<String> cb_talla;
+    private javax.swing.JCheckBox chb_promocion;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txt_Stock;
+    private javax.swing.JTextField txt_Stockmin;
+    private javax.swing.JTextField txt_codigo;
+    private javax.swing.JTextField txt_color;
+    private com.toedter.calendar.JDateChooser txt_fecha;
+    private javax.swing.JTextField txt_fecha1;
+    private javax.swing.JTextField txt_imagen;
+    private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_preciocosto;
+    private javax.swing.JTextField txt_precioventa;
     // End of variables declaration//GEN-END:variables
 }

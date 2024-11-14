@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.SwingUtilities;
 
 
 public class Login extends javax.swing.JFrame {
@@ -311,7 +312,9 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                SwingUtilities.invokeLater(() -> {
+        new Login().setVisible(true); 
+    });
             }
         });
     }
