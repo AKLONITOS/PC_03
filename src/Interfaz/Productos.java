@@ -8,12 +8,12 @@ package Interfaz;
  *
  * @author EDU
  */
-public class Mantenimiento extends javax.swing.JPanel {
+public class Productos extends javax.swing.JPanel {
 
     /**
      * Creates new form Mantenimiento
      */
-    public Mantenimiento() {
+    public Productos() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class Mantenimiento extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Mantenimiento");
+        jLabel1.setText("Productos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -38,14 +38,14 @@ public class Mantenimiento extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(557, 557, 557)
                 .addComponent(jLabel1)
-                .addContainerGap(603, Short.MAX_VALUE))
+                .addContainerGap(1092, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jLabel1)
-                .addContainerGap(1733, Short.MAX_VALUE))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
