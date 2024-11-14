@@ -79,7 +79,7 @@ public class Venta extends javax.swing.JPanel {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 160, 80));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camisas_1.jpg"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, 210, 120));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 50, 210, 120));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buzos.jpg"))); // NOI18N
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, 130, 120));
