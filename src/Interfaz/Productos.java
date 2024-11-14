@@ -8,12 +8,12 @@ package Interfaz;
  *
  * @author EDU
  */
-public class compra extends javax.swing.JPanel {
+public class Productos extends javax.swing.JPanel {
 
     /**
-     * Creates new form compra
+     * Creates new form Mantenimiento
      */
-    public compra() {
+    public Productos() {
         initComponents();
     }
 
@@ -28,24 +28,24 @@ public class compra extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setText("Compra");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("Productos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(602, 602, 602)
+                .addGap(557, 557, 557)
                 .addComponent(jLabel1)
-                .addContainerGap(685, Short.MAX_VALUE))
+                .addContainerGap(1092, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(404, 404, 404)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel1)
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

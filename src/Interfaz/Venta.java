@@ -8,12 +8,12 @@ package Interfaz;
  *
  * @author EDU
  */
-public class Mantenimiento extends javax.swing.JPanel {
+public class Venta extends javax.swing.JPanel {
 
     /**
-     * Creates new form Mantenimiento
+     * Creates new form Venta
      */
-    public Mantenimiento() {
+    public Venta() {
         initComponents();
     }
 
@@ -26,31 +26,19 @@ public class Mantenimiento extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Mantenimiento");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(557, 557, 557)
-                .addComponent(jLabel1)
-                .addContainerGap(603, Short.MAX_VALUE))
+            .addGap(0, 1820, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel1)
-                .addContainerGap(1733, Short.MAX_VALUE))
+            .addGap(0, 770, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
