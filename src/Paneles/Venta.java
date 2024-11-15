@@ -29,7 +29,6 @@ public class Venta extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -46,61 +45,60 @@ public class Venta extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 255, 204));
-        setLayout(new java.awt.GridBagLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("CAMISAS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 180, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("PANTALONES");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("BUZOS");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 360, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("CASACAS");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("ZAPATOS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("POLOS");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pantalones.jpg"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 160, 80));
+        jButton1.setBorder(null);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, 70));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camisas_1.jpg"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 50, 210, 120));
+        jButton2.setBorder(null);
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 200, 100));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buzos.jpg"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, 130, 120));
+        jButton3.setBorder(null);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 120, 120));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casaca (1).jpg"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 160, -1));
+        jButton4.setBorder(null);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 130, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/zapatos (1).jpg"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 400, 130, 120));
+        jButton5.setBorder(null);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, -1, 120));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/polos.jpg"))); // NOI18N
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 240, 120));
+        jButton6.setBorder(null);
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, 110));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 270;
-        gridBagConstraints.ipady = 28;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-        add(jPanel1, gridBagConstraints);
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1150, 640));
     }// </editor-fold>//GEN-END:initComponents
 
 
