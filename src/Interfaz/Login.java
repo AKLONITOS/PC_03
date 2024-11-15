@@ -190,7 +190,7 @@ public class Login extends javax.swing.JFrame {
             //para que se dirigana ala ubicacion del Jframe osea menu
             if (loginExitoso) {
                 JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso");
-                Menu abrir = new Menu();
+                Menu1 abrir = new Menu1();
                 abrir.setVisible(true);
                 this.dispose();  // Cierrar este Jframe
             } else {
@@ -217,7 +217,7 @@ public class Login extends javax.swing.JFrame {
         String Pass=new String(txt_contra.getText());
 
         if(txt_usuario.getText().equals(usuario)&& Pass.equals(contra)){
-            Menu abrir =new Menu();
+            Menu1 abrir =new Menu1();
             abrir.setVisible(true);
             this.dispose();
         } else {
