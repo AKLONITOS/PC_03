@@ -24,12 +24,14 @@ public class Login extends javax.swing.JFrame {
     int i;
     Cuenta pro=new Cuenta();
     TablaCuenta proDao=new TablaCuenta();
+     private boolean mostrarContraseña = false;
 
     public Login() {
         initComponents();
         inicializarDocumentListener();
         setLocationRelativeTo(null);
     }
+    
     private void inicializarDocumentListener() {
         DocumentListener listener = new DocumentListener() {
             @Override
@@ -60,20 +62,25 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         txt_usuario = new javax.swing.JTextField();
-        txt_contra = new javax.swing.JTextField();
         jcb_recordar = new javax.swing.JCheckBox();
         lbl_erroneoContraseña = new javax.swing.JLabel();
         lbl_erroneoUsuario = new javax.swing.JLabel();
         btn_ingresar = new javax.swing.JButton();
         btn_olvido = new javax.swing.JButton();
         btn_crear = new javax.swing.JToggleButton();
+        btn_mostrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txt_contra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jPanel1.setBackground(new java.awt.Color(254, 104, 37));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_usuario.setText("USUARIO");
@@ -90,28 +97,12 @@ public class Login extends javax.swing.JFrame {
                 txt_usuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 340, 37));
-
-        txt_contra.setText("CONTRASEÑA");
-        txt_contra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_contraFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_contraFocusLost(evt);
-            }
-        });
-        txt_contra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 340, 37));
+        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 340, 37));
 
         jcb_recordar.setText("RECORDAR CONTRASEÑA");
-        jPanel1.add(jcb_recordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
-        jPanel1.add(lbl_erroneoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 159, 22));
-        jPanel1.add(lbl_erroneoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 160, 26));
+        jPanel1.add(jcb_recordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
+        jPanel1.add(lbl_erroneoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 159, 22));
+        jPanel1.add(lbl_erroneoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 160, 26));
 
         btn_ingresar.setText("INGRESAR");
         btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,12 +115,12 @@ public class Login extends javax.swing.JFrame {
                 btn_ingresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 162, -1));
+        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 162, -1));
 
         btn_olvido.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         btn_olvido.setText("¿Olvidó su contraseña?");
         btn_olvido.setBorder(null);
-        jPanel1.add(btn_olvido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 240, 29));
+        jPanel1.add(btn_olvido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 240, 29));
 
         btn_crear.setText("CREAR CUENTA");
         btn_crear.addActionListener(new java.awt.event.ActionListener() {
@@ -137,24 +128,37 @@ public class Login extends javax.swing.JFrame {
                 btn_crearActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, 162, -1));
+        jPanel1.add(btn_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 162, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
+        btn_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 40, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 300, 210));
+
+        txt_contra.setText("CONTRASEÑA");
+        txt_contra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_contraFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_contraFocusLost(evt);
+            }
+        });
+        jPanel1.add(txt_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 340, 40));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 90;
+        gridBagConstraints.ipady = 57;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 0);
+        getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,12 +205,7 @@ public class Login extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
-        }
-        
-        
-            
-        
-    
+        }      
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
@@ -231,24 +230,6 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
-    private void txt_contraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contraActionPerformed
-
-    private void txt_contraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_contraFocusLost
-        // TODO add your handling code here:
-        if (txt_contra.getText().isEmpty()) {
-            txt_contra.setText("CONTRASEÑA");
-        }
-    }//GEN-LAST:event_txt_contraFocusLost
-
-    private void txt_contraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_contraFocusGained
-        // TODO add your handling code here:
-        if (txt_contra.getText().equals("CONTRASEÑA")) {
-            txt_contra.setText("");
-        }
-    }//GEN-LAST:event_txt_contraFocusGained
-
     private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuarioActionPerformed
@@ -267,6 +248,37 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_usuarioFocusGained
 
+    private void btn_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrarActionPerformed
+        // TODO add your handling code here:
+        mostrarContraseña = !mostrarContraseña;
+        if (mostrarContraseña) {
+            btn_mostrar.setText("Ocultar");
+        } else {
+            btn_mostrar.setText("Mostrar");
+        }
+        actualizarVisibilidadContraseña();
+    }//GEN-LAST:event_btn_mostrarActionPerformed
+
+    private void txt_contraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_contraFocusGained
+        // TODO add your handling code here:
+        if (txt_contra.getText().equals("CONTRASEÑA")) {
+            txt_contra.setText("");
+        }
+    }//GEN-LAST:event_txt_contraFocusGained
+
+    private void txt_contraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_contraFocusLost
+        // TODO add your handling code here:
+        if (txt_contra.getText().isEmpty()) {
+            txt_contra.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_contraFocusLost
+    private void actualizarVisibilidadContraseña() {
+        if (mostrarContraseña) {
+            txt_contra.setEchoChar((char) 0); // Muestra texto
+        } else {
+            txt_contra.setEchoChar('●'); // Oculta con puntos
+        }
+    }
         private void actualizarBoton() {
             String usuario = txt_usuario.getText().trim();
             List<Cuenta> listaCuentas = proDao.obtenerUsuariosYRoles();
@@ -322,12 +334,14 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_crear;
     private javax.swing.JButton btn_ingresar;
+    private javax.swing.JButton btn_mostrar;
     private javax.swing.JButton btn_olvido;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JCheckBox jcb_recordar;
     private javax.swing.JLabel lbl_erroneoContraseña;
     private javax.swing.JLabel lbl_erroneoUsuario;
-    private javax.swing.JTextField txt_contra;
+    private javax.swing.JPasswordField txt_contra;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
