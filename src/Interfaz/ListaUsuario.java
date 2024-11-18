@@ -74,6 +74,7 @@ public class ListaUsuario extends javax.swing.JFrame {
             
         }
     }
+     
 
 
 
@@ -159,6 +160,8 @@ public class ListaUsuario extends javax.swing.JFrame {
     private void tb_ListaUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_ListaUsuarioMouseClicked
         
         int fila = tb_ListaUsuario.rowAtPoint(evt.getPoint());
+        
+        
 
    
         String nombre = tb_ListaUsuario.getValueAt(fila, 0).toString();

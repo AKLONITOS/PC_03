@@ -15,6 +15,26 @@ public class Producto {
     String color;
     boolean promocion;
     String fecha;
+    String sexo;
+    
+    public Producto(){
+        
+    }
+
+    public Producto(String nombre, double preciovent, byte[] imagen) {
+        this.nombre = nombre;
+        this.preciovent = preciovent;
+        this.imagen = imagen;
+    }
+
+    public Producto(String nombre, String talla, double precio, byte[] imagen) {
+        this.nombre = nombre;
+        this.talla = talla;
+        this.preciovent = precio;
+        this.imagen = imagen;
+    }
+    
+    
 
     public String getCodigo() {
         return codigo;
@@ -111,6 +131,15 @@ public class Producto {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
 
     
     

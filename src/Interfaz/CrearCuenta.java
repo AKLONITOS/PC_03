@@ -18,6 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,7 +27,8 @@ import javax.swing.table.DefaultTableModel;
 public class CrearCuenta extends javax.swing.JFrame {
     Cuenta pro=new Cuenta();
     TablaCuenta proDao=new TablaCuenta();
-    private String nombreUsuario;
+    
+    
     
 
     public CrearCuenta() {
@@ -76,6 +78,13 @@ public class CrearCuenta extends javax.swing.JFrame {
         txt_clave.setText(claveAleatoria);
     }
 
+    public String getNombre() {
+        return txt_nombre.getText();
+    }
+
+    public String getApellido() {
+        return txt_apellido.getText();
+    }
 
 
 

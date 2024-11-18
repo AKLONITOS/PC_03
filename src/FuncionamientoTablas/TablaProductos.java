@@ -43,6 +43,7 @@ public class TablaProductos {
                pro.setColor(rs.getString("Color"));
                pro.setPromocion(rs.getBoolean("Promocion"));
                pro.setFecha(rs.getString("Fecha"));
+               pro.setSexo(rs.getString("Sexo"));
                
                Listapro.add(pro);
                }
@@ -52,7 +53,7 @@ public class TablaProductos {
         return Listapro;
     }
     public boolean AgregarProductos(Producto pro){
-        String sql="INSERT INTO productos (Codigo , Nombre , Categoria , Talla , Stock , Stockmin,Precioco,Preciovent,Imagen , Color , Promocion ,Fecha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO productos (Codigo , Nombre , Categoria , Talla , Stock , Stockmin,Precioco,Preciovent,Imagen , Color , Promocion ,Fecha,Sexo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -68,6 +69,7 @@ public class TablaProductos {
             ps.setString(10, pro.getColor());
             ps.setBoolean(11, pro.isPromocion());
             ps.setString(12, pro.getFecha());
+            ps.setString(13, pro.getSexo());
             ps.execute();
             return true;
         }catch(SQLException e){
@@ -76,51 +78,97 @@ public class TablaProductos {
         }
         
     }
-    private boolean esFechaValida(String fechaCaducidadStr) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date fechaCaducidad = sdf.parse(fechaCaducidadStr);
-            Date fechaActual = new Date();
-
-           
-            return fechaCaducidad.after(fechaActual);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
     
-    public List<byte[]> obtenerImagenesParaBanner() {
-        List<byte[]> bannerImages = new ArrayList<>();
-        String sql = "SELECT Imagen, Promocion, Fecha FROM productos";
+    public boolean ElimarProducto(String cod){
+        String sql="DELETE FROM productos WHERE codigo = ?";
+        try{
+            ps=con.prepareStatement(sql);
+            ps.setString(1,cod);
+            ps.execute();
+            return true;
+        }catch (SQLException e){
+            System.out.println(e.toString());
+            return false;
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException ex){
+                System.out.println(ex.toString());
+            }
+        }
+        
+    }
+    public List<Producto> cargarProductos() {
+    List<Producto> productos = new ArrayList<>();
+    
+    String sql = "SELECT Nombre, Preciovent, Imagen, Fecha FROM productos WHERE Promocion = 1 AND Fecha >= CURDATE()";
 
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+    try {
+        con = cn.getConnection();
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
 
-            while (rs.next()) {
-                boolean promocion = rs.getBoolean("Promocion");
-                String fechaCaducidadStr = rs.getString("Fecha");
-                byte[] imgBytes = rs.getBytes("Imagen");
+        while (rs.next()) {
+            String nombre = rs.getString("Nombre");
+            double precio = rs.getDouble("Preciovent");
+            byte[] imagen = rs.getBytes("Imagen");
+            Date fecha = rs.getDate("Fecha"); 
 
-                
-                if (promocion && esFechaValida(fechaCaducidadStr)) {
-                    bannerImages.add(imgBytes);
+            
+            if (fecha != null && fecha.after(new Date())) {
+                if (imagen != null && imagen.length > 0) {
+                    Producto producto = new Producto(nombre, precio, imagen);
+                    productos.add(producto);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (ps != null) ps.close();
-                if (con != null) con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
-        return bannerImages;
+        System.out.println("Número de productos cargados: " + productos.size());
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    return productos;
     }
     
+    public List<Producto> listarProductosPorCategoria(String categoria) {
+    List<Producto> productos = new ArrayList<>();
+    String sql = "SELECT * FROM productos WHERE Categoria = ?";
+    try {
+        con = cn.getConnection();
+        ps = con.prepareStatement(sql);
+        ps.setString(1, categoria);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Producto producto = new Producto();
+            producto.setNombre(rs.getString("Nombre"));
+            producto.setPreciovent(rs.getDouble("Preciovent"));
+            producto.setImagen(rs.getBytes("Imagen"));
+            productos.add(producto);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Error al listar productos.");
+    }
+    return productos;
+    }
 }
+       
+    
+
+    
+  
+
+    
+    
+    
+    
+

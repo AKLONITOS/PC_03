@@ -148,12 +148,8 @@ public class MenuItem extends JPanel {
 
     
     switch (index) {
-        case 0:Menu.getMain().showForm(new Inicio()); 
-            
-            
-            
-            break;
-            case 1:
+        case 0:Menu.getMain().showForm(new Inicio()); break;
+        case 1:
             if (subIndex == 0) {
                 
                  

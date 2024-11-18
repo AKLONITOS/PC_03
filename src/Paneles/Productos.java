@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -31,6 +33,7 @@ public class Productos extends javax.swing.JPanel {
     public Productos() {
         initComponents();
         Listaproductos();
+        txt_fecha.setMinSelectableDate(new Date());
         
     }
 
@@ -73,7 +76,7 @@ public class Productos extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         txt_Stockmin = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_Eliminar = new javax.swing.JButton();
         txt_fecha = new com.toedter.calendar.JDateChooser();
         imagen = new javax.swing.JLabel();
         txt_imagen = new javax.swing.JTextField();
@@ -87,9 +90,14 @@ public class Productos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Categoria", "Talla", "Stock", "Stock Minimo", "Precio compra", "Precio Venta", "Imagen", "Color", "Promocion", "Fecha"
+                "Codigo", "Nombre", "Categoria", "Talla", "Stock", "Stock Minimo", "Precio compra", "Precio Venta", "Imagen", "Color", "Promocion", "Fecha", "Sexo"
             }
         ));
+        TablaListaPro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaListaProMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaListaPro);
 
         jLabel6.setText("Stock Minimo");
@@ -140,7 +148,12 @@ public class Productos extends javax.swing.JPanel {
 
         jButton5.setText("Nuevo");
 
-        jButton4.setText("Eliminar");
+        btn_Eliminar.setText("Eliminar");
+        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarActionPerformed(evt);
+            }
+        });
 
         imagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -154,7 +167,12 @@ public class Productos extends javax.swing.JPanel {
         roundPanel1.setLayout(roundPanel1Layout);
         roundPanel1Layout.setHorizontalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1798, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
+                .addContainerGap(550, Short.MAX_VALUE)
+                .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(178, 178, 178)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(249, 249, 249))
             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(roundPanel1Layout.createSequentialGroup()
                     .addGap(35, 35, 35)
@@ -206,7 +224,7 @@ public class Productos extends javax.swing.JPanel {
                         .addGroup(roundPanel1Layout.createSequentialGroup()
                             .addComponent(btn_agregar)
                             .addGap(28, 28, 28)
-                            .addComponent(jButton4))
+                            .addComponent(btn_Eliminar))
                         .addGroup(roundPanel1Layout.createSequentialGroup()
                             .addComponent(jButton3)
                             .addGap(28, 28, 28)
@@ -216,9 +234,7 @@ public class Productos extends javax.swing.JPanel {
                         .addGroup(roundPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel10)
                             .addGap(6, 6, 6)
-                            .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(78, 78, 78)
-                            .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(roundPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(16, 16, 16)
@@ -233,19 +249,24 @@ public class Productos extends javax.swing.JPanel {
                         .addGroup(roundPanel1Layout.createSequentialGroup()
                             .addGap(40, 40, 40)
                             .addComponent(txt_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(50, 50, 50)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(35, Short.MAX_VALUE)))
+                    .addContainerGap(1065, Short.MAX_VALUE)))
         );
         roundPanel1Layout.setVerticalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 742, Short.MAX_VALUE)
+            .addGroup(roundPanel1Layout.createSequentialGroup()
+                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(roundPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(roundPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
                     .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(roundPanel1Layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
+                            .addGap(46, 46, 46)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
                                 .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,19 +303,16 @@ public class Productos extends javax.swing.JPanel {
                             .addGap(28, 28, 28)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btn_agregar)
-                                .addComponent(jButton4))
+                                .addComponent(btn_Eliminar))
                             .addGap(37, 37, 37)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButton3)
                                 .addComponent(jButton5)))
                         .addGroup(roundPanel1Layout.createSequentialGroup()
+                            .addGap(146, 146, 146)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(roundPanel1Layout.createSequentialGroup()
-                                    .addGap(140, 140, 140)
-                                    .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel10)
+                                .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
@@ -306,11 +324,8 @@ public class Productos extends javax.swing.JPanel {
                             .addGap(88, 88, 88)
                             .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(108, 108, 108)
-                            .addComponent(txt_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(roundPanel1Layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txt_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(133, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -339,6 +354,8 @@ public class Productos extends javax.swing.JPanel {
            pro.setNombre(txt_nombre.getText());
            String selecionCategoria = (String) cb_categoria.getSelectedItem();
            pro.setCategoria(selecionCategoria);
+           String selecionSexo = (String) cb_sexo.getSelectedItem();
+           pro.setSexo(selecionSexo);
            String seleciontalla = (String) cb_talla.getSelectedItem();
            pro.setTalla(seleciontalla);
            pro.setStock(Integer.parseInt(txt_Stock.getText()));
@@ -364,10 +381,16 @@ public class Productos extends javax.swing.JPanel {
            pro.setPromocion(chb_promocion.isSelected());
            java.util.Date fecha = txt_fecha.getDate(); 
            if (fecha != null) {
-               SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
-               String fechaString = sdf.format(fecha); 
-               pro.setFecha(fechaString);
-           }
+    // Validar si la fecha es válida (no es una fecha pasada)
+    if (fecha.after(new Date()) || fecha.equals(new Date())) {
+        // Formatear la fecha si es válida
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaString = sdf.format(fecha); 
+        pro.setFecha(fechaString);  // Establecer la fecha en el objeto Producto
+    } else {
+        JOptionPane.showMessageDialog(this, "La fecha seleccionada no es válida. Por favor, seleccione una fecha futura.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
            //pro.setFecha(txt_fecha.getDateFormatString());
            proDao.AgregarProductos(pro);
            JOptionPane.showMessageDialog(null, "PRODUCTO AGREGADO");
@@ -404,10 +427,71 @@ public class Productos extends javax.swing.JPanel {
     private void txt_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_imagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_imagenActionPerformed
+
+    private void TablaListaProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaListaProMouseClicked
+        // TODO add your handling code here:
+        int fila = TablaListaPro.rowAtPoint(evt.getPoint());
+        txt_nombre.setText(TablaListaPro.getValueAt(fila, 1).toString());
+        txt_codigo.setText(TablaListaPro.getValueAt(fila, 0).toString());
+        txt_Stock.setText(TablaListaPro.getValueAt(fila, 4).toString());
+        txt_preciocosto.setText(TablaListaPro.getValueAt(fila, 6).toString());
+        txt_precioventa.setText(TablaListaPro.getValueAt(fila, 7).toString());
+        txt_Stockmin.setText(TablaListaPro.getValueAt(fila, 5).toString());
+        txt_color.setText(TablaListaPro.getValueAt(fila, 9).toString());
+        
+        byte[] imagenBytes = (byte[]) TablaListaPro.getValueAt(fila, 8); 
+        //txt_imagen.setText(TablaListaPro.getValueAt(fila,8));
+        if (imagenBytes != null) {
+         ImageIcon icon = new ImageIcon(imagenBytes);
+         Image img = icon.getImage();  
+          Image newImg = img.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+          icon = new ImageIcon(newImg);
+          imagen.setIcon(icon);
+        }
+        String categoria = TablaListaPro.getValueAt(fila, 2).toString(); 
+        String talla = TablaListaPro.getValueAt(fila, 3).toString();
+        String sexo=TablaListaPro.getValueAt(fila, 12).toString();
+        cb_categoria.setSelectedItem(categoria);
+        cb_talla.setSelectedItem(talla);
+        cb_sexo.setSelectedItem(sexo);
+        boolean promocion = (boolean) TablaListaPro.getValueAt(fila, 10); 
+        chb_promocion.setSelected(promocion);
+        String fechaCaducidad = TablaListaPro.getValueAt(fila, 11).toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // Ajusta el formato si es necesario
+        try {
+            Date fecha = sdf.parse(fechaCaducidad);
+            txt_fecha.setDate(fecha); 
+        } catch (ParseException e) {
+            e.printStackTrace();
+    }
+        
+        
+
+        
+        
+    }//GEN-LAST:event_TablaListaProMouseClicked
+
+    private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
+        // TODO add your handling code here:
+        if(!"".equals(txt_codigo.getText())){
+            int pregunta=JOptionPane.showConfirmDialog(null, "ESTA SEGURO QUE QUIERES ELIMINAR");
+            if(pregunta==0){
+                
+                proDao.ElimarProducto(txt_codigo.getText());
+                
+                LimpiarTabla();
+                Listaproductos();
+                
+                
+                
+            }
+        }
+        
+    }//GEN-LAST:event_btn_EliminarActionPerformed
 public void Listaproductos() {
         List<Producto> Listapro = proDao.ListadeProductos();
         modelo = (DefaultTableModel) TablaListaPro.getModel();
-        Object[] ob = new Object[12];
+        Object[] ob = new Object[13];
         for (int i = 0; i < Listapro.size(); i++) {
             ob[0] = Listapro.get(i).getCodigo();
             ob[1] = Listapro.get(i).getNombre();
@@ -421,6 +505,8 @@ public void Listaproductos() {
             ob[9] = Listapro.get(i).getColor();
             ob[10] = Listapro.get(i).isPromocion();
             ob[11] = Listapro.get(i).getFecha();
+            ob[12]=Listapro.get(i).getSexo();
+            
             modelo.addRow(ob);
         }
         TablaListaPro.setModel(modelo);
@@ -436,6 +522,7 @@ public void Listaproductos() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaListaPro;
+    private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JComboBox<String> cb_categoria;
     private javax.swing.JComboBox<String> cb_sexo;
@@ -444,7 +531,6 @@ public void Listaproductos() {
     private javax.swing.JLabel imagen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
