@@ -290,7 +290,7 @@ public class Control_Consultas {
             while (resultado.next()) {
 
 
-                int num = resultado.getInt("idVentas");
+                int num = resultado.getInt("v.IdVentas");
                 String fact = resultado.getString("f.Fecha");
                 String prod = resultado.getString("p.Nombre");
                 String cant = resultado.getString("Cantidad");
@@ -383,7 +383,7 @@ float total=0;
 double stock=0;
 
             while (rs.next()) {
-                int num = rs.getInt("IdVentas");
+                int num = rs.getInt("v.IdVentas");
                 String fact = rs.getString("f.Fecha");
                 String prod = rs.getString("p.Nombre");
                 String cant = rs.getString("v.Cantidad");
@@ -425,7 +425,7 @@ float total=0;
 
 
             while (resultado.next()) {
-                int num = resultado.getInt("IdVenta");
+                int num = resultado.getInt("v.IdVentas");
                 String fact = resultado.getString("f.Fecha");
                 String prod = resultado.getString("p.Nombre");
                 String cant = resultado.getString("v.Cantidad");

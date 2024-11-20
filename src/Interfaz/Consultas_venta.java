@@ -4,6 +4,16 @@
  */
 package Interfaz;
 
+import Clases.Control_Consultas;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author EQUIPO
@@ -13,6 +23,8 @@ public class Consultas_venta extends javax.swing.JFrame {
     /**
      * Creates new form Consultas_venta
      */
+    Control_Consultas cc = new Control_Consultas();
+    
     public Consultas_venta() {
         initComponents();
     }
@@ -80,6 +92,11 @@ public class Consultas_venta extends javax.swing.JFrame {
 
         btn_bp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_bp.setText("B. P.");
+        btn_bp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bpActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_bp, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 60, 30));
 
         tb_consultasven.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,10 +129,20 @@ public class Consultas_venta extends javax.swing.JFrame {
 
         btn_imprimir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_imprimir.setText("IMPRIMIR");
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 100, 30));
 
         btn_mostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_mostrar.setText("MOSTRAR TODOS");
+        btn_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 672, 581));
@@ -125,12 +152,78 @@ public class Consultas_venta extends javax.swing.JFrame {
 
     private void btn_bfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bfActionPerformed
         // TODO add your handling code here:
+        try{
+ 
+            String formato = dt_finicial.getDateFormatString();
+            Date date = dt_finicial.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat(formato);
+            String fecha=String.valueOf(sdf.format(date));
+                    String formato2 = dt_ffinal.getDateFormatString();
+            Date date2 = dt_ffinal.getDate();
+            SimpleDateFormat sdf2 = new SimpleDateFormat(formato2);
+            String fecha2=String.valueOf(sdf.format(date2));    
+            //fecha 2
+            
+      //  String parametroBusqueda = jDateChooser_fecha.getText(); 
+        cc.buscarFacturasdeVentasFecha(fecha,fecha2 );
+                                                                                                   int[] anchos = {35, 150, 400, 70, 70};
+        for (int i = 0; i < tb_consultasven.getColumnCount(); i++) {
+            tb_consultasven.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null," bash "+e);
+        }
     }//GEN-LAST:event_btn_bfActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        System.gc();//limpiar basura
+        dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btn_bpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bpActionPerformed
+        // TODO add your handling code here:
+        try{
+        
+            
+        String parametroBusqueda = txt_producto.getText(); 
+        cc.buscarFacturasdeVentas(parametroBusqueda );
+         int[] anchos = {35, 150, 400, 70, 70};
+        for (int i = 0; i < tb_consultasven.getColumnCount(); i++) {
+            tb_consultasven.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null," bash "+e);
+        }
+    }//GEN-LAST:event_btn_bpActionPerformed
+
+    private void btn_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrarActionPerformed
+        // TODO add your handling code here:
+        cc.listarTodosVentas();
+         int[] anchos = {35, 150, 400, 70, 70};
+        for (int i = 0; i < tb_consultasven.getColumnCount(); i++) {
+            tb_consultasven.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        
+    }//GEN-LAST:event_btn_mostrarActionPerformed
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        // TODO add your handling code here:
+        String reporte = JOptionPane.showInputDialog(null, "Escriba Titulo de la hoja?");
+        // IMPRIMIR POR IMPRESORA
+        try {
+            //Mensaje de encabezado
+            MessageFormat  headerFormat = new MessageFormat("Reportes de "+reporte);           
+            //Mensaje en el pie de pagina
+            MessageFormat footerFormat = new MessageFormat("ALMACEN FLOREZ");
+            //Imprimir JTable
+            tb_consultasven.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Consultas_venta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_imprimirActionPerformed
 
     /**
      * @param args the command line arguments
