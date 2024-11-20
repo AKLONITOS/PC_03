@@ -182,7 +182,7 @@ public class Consultas_venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tb_consultasven;
+    public static javax.swing.JTable tb_consultasven;
     private javax.swing.JTextField txt_producto;
     // End of variables declaration//GEN-END:variables
 }
