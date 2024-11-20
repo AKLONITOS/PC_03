@@ -3,60 +3,55 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Menu.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/BannerPublicitarioBD.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Conexiones/Conexion.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/VentanaGaleria.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/scroll/ScrollBar.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/CrearCuenta.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Form_Dashboard.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Consultas_venta.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/BOTON%20ELIMINAR.jpg</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/InsertarImagen.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/scroll/ModernScrollBarUI.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/Carrito.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/card/LabelIcon.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/table/Table.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/Item.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/BOTONES.jpg</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/system/SystemColor.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/titlebar/TitleBar.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/FuncionamientoTablas/Generador.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Login.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/TiendaPanel.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Venta.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/card/Card.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/LOGO%20ANIMACION.gif</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/logo.png</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/Inicio.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/animacionmenu.gif</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Inicio.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/MenuItem.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/ListaUsuario.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/GaleriaPanel.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/FuncionamientoTablas/TablaProductos.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/PRESENTACION1.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/camisas_1.jpg</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/EventMenuSelected.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/card/ModelCard.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Consultas_Factura.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Menu.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Conexiones/Conexion.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/CrearCuenta.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/scroll/ModernScrollBarUI.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Generar_orden.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/Item.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Login.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/FuncionamientoTablas/TablaCuenta.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/BOTON%20AGREGAR.jpg</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/Menu.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/Menu1.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/RoundPanel.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Inicio.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/MenuItem.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/ListaUsuario.java</file>
+            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Consultas.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Clases/Producto.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/otro.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/table/TableHeader.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/ModelMenuItem.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/TiendaApp.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/swing/titlebar/ComponentResizer.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Reporte.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/GaleriaPanel.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Productos.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/FuncionamientoTablas/TablaProductos.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Interfaz/PRESENTACION1.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/hola/RopaInteractiva.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Clases/Cuenta.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Imagenes/camisas_1.jpg</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/menu/EventMenuSelected.java</file>
-            <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/javaswingdev/card/ModelCard.java</file>
             <file>file:/D:/EDU/Desktop/ProyectoPC3Nuevo/PC_03/src/Paneles/Form_Empty.java</file>
-
-            <file>file:/C:/Users/EQUIPO/Desktop/PC_03/src/Interfaz/Consultas_Factura.java</file>
-            <file>file:/C:/Users/EQUIPO/Desktop/PC_03/src/Interfaz/Login.java</file>
-            <file>file:/C:/Users/EQUIPO/Desktop/PC_03/src/Paneles/Consultas.java</file>
-
         </group>
     </open-files>
 </project-private>
