@@ -47,7 +47,7 @@ public class Control_Consultas {
     
     public void listarTodosFacturas() {
         
-        String[] titulosColumnas = {"No_Facturas", "CLIENTE", "RAZÓN SOCIAL", "FECHA","TOTAL"};
+        String[] titulosColumnas = {"IdFacturas", "CLIENTE", "FECHA","TOTAL"};
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -79,18 +79,18 @@ public class Control_Consultas {
             conexion = Conexion.getConnection();
 
             sentencia = conexion.createStatement();
-            String consultaSQL = "SELECT * FROM cabecera_venta c inner join cliente c on f.cliente=c.idCliente ORDER BY fecha ASC";
+            String consultaSQL = "SELECT * FROM cabecera_venta v inner join cliente c on v.idCliente=c.idCliente ORDER BY fecha ASC";
             resultado = sentencia.executeQuery(consultaSQL);
 
 
-            //mientras haya datos en la BD ejecutar eso...
+            
             while (resultado.next()) {
 
 
-             int fact = resultado.getInt("No_Facturas");
+             int fact = resultado.getInt("IdFactura");
                 String cliente = resultado.getString("c.Nombre")+resultado.getString("c.Apellido");
                 String fecha = resultado.getString("fecha");
-                String total = resultado.getString("totals");
+                String total = resultado.getString("Total");
 
 
 
@@ -118,7 +118,7 @@ public class Control_Consultas {
   
     public void buscarFacturas(String parametroBusqueda, boolean buscarPorFacturas, boolean buscarPorCliente, boolean buscarPorFecha) {
 
-        String[] titulosColumnas = {"No_Facturas", "CLIENTE", "FECHA","TOTAL"};
+        String[] titulosColumnas = {"IdFactura", "CLIENTE", "FECHA","TOTAL"};
         if ((parametroBusqueda.trim().length() == 0)) {
             JOptionPane.showMessageDialog(null,"Error, datos incorrectos");
         } else {
@@ -153,7 +153,7 @@ public class Control_Consultas {
             } 
             else if(buscarPorCliente== true){
                 System.out.print("buscando por cliente");
-                selectSQL = "SELECT * FROM tb_facturas f inner join cliente c on f.cliente=c.idCliente WHERE  c.Ruc_cliente LIKE ? or c.Nombre LIKE ? ORDER BY fecha ASC";
+                selectSQL = "SELECT * FROM tb_facturas f inner join cliente c on f.Idcliente=c.idCliente WHERE  c.Ruc_cliente LIKE ? or c.Nombre LIKE ? ORDER BY fecha ASC";
                 ps = conexion.prepareStatement(selectSQL);
 
                  ps.setString(1, "%" + parametroBusqueda + "%");
@@ -162,17 +162,17 @@ public class Control_Consultas {
             else if(buscarPorFecha== true){
 
                 System.out.print("buscando por fecha -->"+parametroBusqueda);
-                selectSQL = "SELECT * FROM tb_facturas f inner join  cliente c on f.IdCliente=c.idCliente WHERE f.fecha LIKE ?  ORDER BY fecha ASC";
+                selectSQL = "SELECT * FROM tb_facturas f inner join  cliente c on f.IdCliente=c.idCliente WHERE f.Fecha LIKE ?  ORDER BY fecha ASC";
                 ps = conexion.prepareStatement(selectSQL);
                 ps.setString(1, "%" + parametroBusqueda + "%");
             }
             resultado = ps.executeQuery();
 
             while (resultado.next()) {
-                int fact = resultado.getInt("No_Facturas");
-                String cliente = resultado.getString("c.Nombre_Cliente")+resultado.getString("c.Apellido_Cliente");
+                int fact = resultado.getInt("IdFactura");
+                String cliente = resultado.getString("c.Nombre")+resultado.getString("c.Apellido");
                 String fecha = resultado.getString("fecha");
-                String total = resultado.getString("totals");
+                String total = resultado.getString("Total");
                 
 
                 //crea un vector donde los está la informacion (se crea una fila)
@@ -194,7 +194,7 @@ public class Control_Consultas {
 
     public void buscarFacturas ( String number){
         
-        String[] titulosColumnas = {"ID-VENTAS", "PRODUCTOS", "CANTIDAD", "IMPORTE"};
+        String[] titulosColumnas = {"idVenta", "PRODUCTOS", "CANTIDAD", "IMPORTE"};
         if( (number.trim().length()==0)){
             JOptionPane.showMessageDialog(null,"Error, Seleccione la Facturas");
         }
@@ -226,17 +226,17 @@ public class Control_Consultas {
             String selectSQL;
             resultado = null;
            
-                selectSQL = "SELECT * FROM table_ventas WHERE IdFactura LIKE ? ORDER BY IdVentas ASC";
+                selectSQL = "SELECT * FROM tb_ventas WHERE IdFactura LIKE ? ORDER BY IdVentas ASC";
                 ps = conexion.prepareStatement(selectSQL);
                 ps.setString(1, "%" + number + "%");
             
             resultado = ps.executeQuery();
 
             while (resultado.next()) {
-                String id = resultado.getString("idVentas");
-                String product = resultado.getString("productos");
-                String cant = resultado.getString("cantidad");
-                String imp = resultado.getString("importe");
+                String id = resultado.getString("IdVentas");
+                String product = resultado.getString("Productos");
+                String cant = resultado.getString("Cantidad");
+                String imp = resultado.getString("Importe");
 
                 String name="";
                 Statement comando = conexion.createStatement();
@@ -264,7 +264,7 @@ public class Control_Consultas {
     
     public void listarTodosVentas() {
         
-        String[] titulosColumnas = {"id-Ventas","Fecha", "Producto", "cantidad", "Importe"};
+        String[] titulosColumnas = {"idVenta","Fecha", "Producto", "cantidad", "Importe"};
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -293,8 +293,8 @@ public class Control_Consultas {
                 int num = resultado.getInt("idVentas");
                 String fact = resultado.getString("f.Fecha");
                 String prod = resultado.getString("p.Nombre");
-                String cant = resultado.getString("cantidad");
-                String importe = resultado.getString("importe");
+                String cant = resultado.getString("Cantidad");
+                String importe = resultado.getString("Importe");
 
                 Object[] info = {num,fact,prod,cant,importe};
 
@@ -318,7 +318,7 @@ public class Control_Consultas {
             
                 public void buscarFacturasdeVentasFecha(String parametroBusqueda,String parametroBusqued2) {
 
-        String[] titulosColumnas = {"id-Ventas","Fecha", "Producto", "cantidad", "Importe"};
+        String[] titulosColumnas = {"idVenta","Fecha", "Producto", "cantidad", "Importe"};
         if ((parametroBusqueda.trim().length() == 0)) {
             JOptionPane.showMessageDialog(null,"Error, datos incorrectos");
         } else {
@@ -340,7 +340,7 @@ public class Control_Consultas {
     }//cierra metodo buscarCliente
     public void buscarFacturasdeVentas(String parametroBusqueda) {
 
-        String[] titulosColumnas = {"id-Ventas","Fecha", "Producto", "cantidad", "Importe"};
+        String[] titulosColumnas = {"idVenta","Fecha", "Producto", "cantidad", "Importe"};
         if ((parametroBusqueda.trim().length() == 0)) {
             JOptionPane.showMessageDialog(null,"Error, datos incorrectos");
         } else {
@@ -416,7 +416,7 @@ double stock=0;
             resultado = null;
                 
                 System.out.print("buscando por facturas en Ventas");
-               selectSQL = "SELECT * FROM table_Facturas f inner join  table_Ventas v on f.No_Facturas=v.No_Facturas inner join  table_Productos p on v.Productos=p.idProductos WHERE p.nombreProductos LIKE ? ORDER BY v.idVentas ASC";
+               selectSQL = "SELECT * FROM tb_facturas f inner join  tb_ventas v on f.IdFactura=v.IdFactura inner join  productos p on v.Productos=p.Codigo WHERE p.Nombre LIKE ? ORDER BY v.idVentas ASC";
                 ps = conexion.prepareStatement(selectSQL);
                 ps.setString(1, "%" + parametroBusqueda + "%");
             
