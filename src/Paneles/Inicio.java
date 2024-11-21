@@ -16,7 +16,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,17 +35,19 @@ import javax.swing.Timer;
 
 
 public class Inicio extends javax.swing.JPanel {
+    Producto pro =new Producto();
     TablaProductos proDao = new TablaProductos();
     List<Producto> productos =proDao.ListadeProductos();
     private List<JLabel> puntos = new ArrayList<>();
-    private JScrollPane scrollPane; 
+    
     private int index = 0;
+    
     
     public Inicio() {
         initComponents();
         
         //ocultar pestañas
-        
+        PanelTallas.setLayout(new FlowLayout(FlowLayout.CENTER));
         Pestañas.setBounds(10, 10, 360, 200);
         Pestañas.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI() {
             @Override
@@ -81,7 +87,7 @@ public class Inicio extends javax.swing.JPanel {
        
 
         // Listeners para los botones
-        btn_salir.addActionListener(new ActionListener() {
+        btn_atras.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cambiarImagen(-1);
@@ -184,89 +190,157 @@ public class Inicio extends javax.swing.JPanel {
     
     
     private void cargarGaleriaPorCategoria(String categoria) {
-        Galeria.removeAll(); 
-        Galeria.setLayout(new GridLayout(0, 3, 10, 10));  // Diseño de rejilla
+    // Limpiar Galeria antes de cargar productos
+    Galeria.removeAll();
+    Galeria.setLayout(new GridLayout(2, 4, 5, 5)); // Distribuir en 3 columnas
 
-        TablaProductos tablaProductos = new TablaProductos();
-        List<Producto> productos = tablaProductos.listarProductosPorCategoria(categoria);
+    // Obtener la lista de productos por categoría
+    TablaProductos tablaProductos = new TablaProductos();
+    List<Producto> productos = tablaProductos.listarProductosPorCategoria(categoria);
 
-        if (productos.isEmpty()) {
-            JLabel mensajeVacio = new JLabel("No hay productos disponibles en esta categoría.");
-            mensajeVacio.setHorizontalAlignment(SwingConstants.CENTER);
-            Galeria.add(mensajeVacio);
-        } else {
-            for (Producto producto : productos) {
-                JPanel panelProducto = crearPanelProducto(producto);
-                Galeria.add(panelProducto);
+    if (productos == null || productos.isEmpty()) {
+        JLabel mensajeVacio = new JLabel("No hay productos disponibles en esta categoría.");
+        mensajeVacio.setHorizontalAlignment(SwingConstants.CENTER);
+        Galeria.add(mensajeVacio);
+    } else {
+        // Agrupar productos por nombre
+        Map<String, List<Producto>> productosAgrupados = agruparProductosPorNombre(productos);
+        for (Map.Entry<String, List<Producto>> entry : productosAgrupados.entrySet()) {
+            String nombreProducto = entry.getKey();
+            List<Producto> variantes = entry.getValue();
+            JPanel panelProducto = new JPanel(new BorderLayout());
+            Producto productoPrincipal = variantes.get(0);
+            JPanel infoPanel = new JPanel(new GridLayout(0, 1));
+            
+            // Mostrar la imagen del producto principal
+            JLabel lblImagen = new JLabel();
+            try {
+                ImageIcon icon = new ImageIcon(productoPrincipal.getImagen());
+                Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                lblImagen.setIcon(new ImageIcon(img));
+            } catch (Exception e) {
+                lblImagen.setText("Imagen no disponible");
+                lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
             }
-        }
+            infoPanel.add(lblImagen);
 
-        Galeria.revalidate();
-        Galeria.repaint();
+            // Mostrar nombre y precio del producto
+            JLabel lblNombre = new JLabel("Nombre: " + productoPrincipal.getNombre());
+            JLabel lblPrecio = new JLabel("Precio: S/ " + productoPrincipal.getPreciovent());
+            infoPanel.add(lblNombre);
+            infoPanel.add(lblPrecio);
+
+            // Añadir el panel de información al panel principal
+            panelProducto.add(infoPanel, BorderLayout.NORTH);
+
+            // Crear botón "Seleccionar" para el producto
+            JButton btnSeleccionar = new JButton("Seleccionar");
+            btnSeleccionar.addActionListener(e -> mostrarDetalleProducto(productoPrincipal, variantes));
+            
+            panelProducto.add(btnSeleccionar, BorderLayout.SOUTH);
+            
+
+            // Añadir el panel de producto a la Galeria
+            Galeria.add(panelProducto);
+        }
     }
-    private JPanel crearPanelProducto(Producto producto) {
+
+    // Actualizar la interfaz
+    Galeria.revalidate();
+    Galeria.repaint();
+    }
+    private JPanel crearPanelProductoAgrupado(Producto productoPrincipal, List<Producto> variantes) {
         JPanel panel = new JPanel(new BorderLayout());
 
-        // Imagen del producto
-        JLabel lblImagen;
+    // Mostrar la imagen del producto
+        JLabel lblImagen = new JLabel();
         try {
-            ImageIcon imageIcon = new ImageIcon(producto.getImagen());
-            Image image = imageIcon.getImage();
-            Image resizedImage = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-            lblImagen = new JLabel(new ImageIcon(resizedImage));
+            ImageIcon icon = new ImageIcon(productoPrincipal.getImagen());
+            Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            lblImagen.setIcon(new ImageIcon(img));
         } catch (Exception e) {
-            lblImagen = new JLabel("Imagen no disponible");
+            lblImagen.setText("Imagen no disponible");
+            lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
         }
-        lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-
-        // Botón para seleccionar el producto
-        JButton btnSeleccionar = new JButton("Seleccionar");
-        btnSeleccionar.addActionListener(e -> {
-        mostrarDetalleProducto(producto);
-        Pestañas.setSelectedIndex(3);
-    });
-
         panel.add(lblImagen, BorderLayout.CENTER);
+
+    
+        JButton btnSeleccionar = new JButton("Seleccionar");
+        btnSeleccionar.addActionListener(e -> mostrarDetalleProducto(productoPrincipal, variantes));
         panel.add(btnSeleccionar, BorderLayout.SOUTH);
 
         return panel;
     }
 
-    private void mostrarDetalleProducto(Producto producto) {
+    private void mostrarDetalleProducto(Producto productoPrincipal, List<Producto> variantes) {
     
-    if (producto != null) {
-        // Actualizar el nombre
-        lblNombre.setText("Nombre: " + producto.getNombre());
+        lblNombre.setText("");
+        lblPrecio.setText("");
+        lblStock.setText("");
+        lblSexo.setText("");
+        lblImagen.setIcon(null);
+        PanelTallas.removeAll(); 
 
-        // Actualizar el sexo
-        lblSexo.setText("Sexo: " + producto.getSexo());
+   
+        lblNombre.setText("Nombre: " + productoPrincipal.getNombre());
+        lblPrecio.setText("Precio: S/ " + productoPrincipal.getPreciovent());
+        lblStock.setText("Stock: " + productoPrincipal.getStock());
+        lblSexo.setText("Sexo: " + productoPrincipal.getSexo());
 
-        // Actualizar el precio
-        lblPrecio.setText("Precio: S/ " + producto.getPreciovent());
-
-        // Actualizar la imagen
-        try {
-            ImageIcon icon = new ImageIcon(producto.getImagen());
-            Image img = icon.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH);
-            lblImagen.setIcon(new ImageIcon(img));
-        } catch (Exception e) {
-            lblImagen.setText("Imagen no disponible");
-            lblImagen.setIcon(null);
-        }
-    } else {
-        
-        lblNombre.setText("Nombre: No disponible");
-        lblSexo.setText("Sexo: No disponible");
-        lblPrecio.setText("Precio: No disponible");
+    // Cargar la imagen del producto principal
+    try {
+        ImageIcon icon = new ImageIcon(productoPrincipal.getImagen());
+        Image img = icon.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH);
+        lblImagen.setIcon(new ImageIcon(img));
+    } catch (Exception ex) {
         lblImagen.setText("Imagen no disponible");
         lblImagen.setIcon(null);
     }
 
-    
-    
+    // Agregar los botones de talla
+    if (variantes != null && !variantes.isEmpty()) {
+        for (Producto p : variantes) {
+            if (p.getTalla() != null && !p.getTalla().isEmpty()) {
+                JButton btnTalla = new JButton(p.getTalla());
+                btnTalla.addActionListener(e -> {
+                    // Actualizar los detalles del producto según la talla seleccionada
+                    lblPrecio.setText("Precio: S/ " + p.getPreciovent());
+                    lblStock.setText("Stock: " + p.getStock());
+                    try {
+                        ImageIcon iconTalla = new ImageIcon(p.getImagen());
+                        Image imgTalla = iconTalla.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH);
+                        lblImagen.setIcon(new ImageIcon(imgTalla));
+                    } catch (Exception ex) {
+                        lblImagen.setText("Imagen no disponible");
+                        lblImagen.setIcon(null);
+                    }
+                });
+                PanelTallas.add(btnTalla); 
+            }
+        }
+    } else {
+        JLabel lblSinTallas = new JLabel("No hay tallas disponibles");
+        lblSinTallas.setHorizontalAlignment(SwingConstants.CENTER);
+        PanelTallas.add(lblSinTallas);
+    }
+
+    // Actualizar el panel de tallas
+    PanelTallas.revalidate();
+    PanelTallas.repaint();
+    Pestañas.setSelectedIndex(3);
 }
-    
-   
+
+    public Map<String, List<Producto>> agruparProductosPorNombre(List<Producto> productos) {
+        Map<String, List<Producto>> productosAgrupados = new HashMap<>();
+    for (Producto producto : productos) {
+        String nombre = producto.getNombre();
+        if (!productosAgrupados.containsKey(nombre)) {
+            productosAgrupados.put(nombre, new ArrayList<>());
+        }
+        productosAgrupados.get(nombre).add(producto);
+    }
+    return productosAgrupados;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -310,12 +384,14 @@ public class Inicio extends javax.swing.JPanel {
         btn_salir = new javax.swing.JButton();
         Galeria = new javax.swing.JPanel();
         pantalones = new javax.swing.JPanel();
+        PanelTallas = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         lblSexo = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
         btn_carrito = new javax.swing.JButton();
         btn_atras2 = new javax.swing.JButton();
+        lblStock = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -499,7 +575,7 @@ public class Inicio extends javax.swing.JPanel {
                 .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_generar, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(btn_reporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         Pestañas.addTab("Inicio", Inicio);
@@ -618,11 +694,24 @@ public class Inicio extends javax.swing.JPanel {
             .addGroup(DeportivoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btn_salir)
-                .addContainerGap(872, Short.MAX_VALUE))
+                .addContainerGap(876, Short.MAX_VALUE))
             .addComponent(Galeria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Pestañas.addTab("polo", Deportivo);
+
+        PanelTallas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout PanelTallasLayout = new javax.swing.GroupLayout(PanelTallas);
+        PanelTallas.setLayout(PanelTallasLayout);
+        PanelTallasLayout.setHorizontalGroup(
+            PanelTallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 318, Short.MAX_VALUE)
+        );
+        PanelTallasLayout.setVerticalGroup(
+            PanelTallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 134, Short.MAX_VALUE)
+        );
 
         lblNombre.setText("jLabel11");
 
@@ -642,6 +731,8 @@ public class Inicio extends javax.swing.JPanel {
             }
         });
 
+        lblStock.setText("jLabel11");
+
         javax.swing.GroupLayout pantalonesLayout = new javax.swing.GroupLayout(pantalones);
         pantalones.setLayout(pantalonesLayout);
         pantalonesLayout.setHorizontalGroup(
@@ -649,22 +740,27 @@ public class Inicio extends javax.swing.JPanel {
             .addGroup(pantalonesLayout.createSequentialGroup()
                 .addGroup(pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pantalonesLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(lblPrecio)
-                        .addGap(56, 56, 56)
-                        .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btn_atras2))
+                    .addGroup(pantalonesLayout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(lblStock))
                     .addGroup(pantalonesLayout.createSequentialGroup()
                         .addGap(315, 315, 315)
                         .addGroup(pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSexo)
+                            .addGroup(pantalonesLayout.createSequentialGroup()
+                                .addComponent(lblSexo)
+                                .addGap(289, 289, 289)
+                                .addComponent(PanelTallas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblNombre)))
                     .addGroup(pantalonesLayout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(btn_carrito))
-                    .addGroup(pantalonesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_atras2)))
-                .addContainerGap(1357, Short.MAX_VALUE))
+                        .addGap(118, 118, 118)
+                        .addComponent(lblPrecio)
+                        .addGap(56, 56, 56)
+                        .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155)
+                        .addComponent(btn_carrito)))
+                .addContainerGap(930, Short.MAX_VALUE))
         );
         pantalonesLayout.setVerticalGroup(
             pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,19 +768,30 @@ public class Inicio extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(btn_atras2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombre)
-                .addGap(63, 63, 63)
-                .addComponent(lblSexo)
                 .addGroup(pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pantalonesLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(lblPrecio))
+                        .addComponent(lblNombre)
+                        .addGap(63, 63, 63)
+                        .addComponent(lblSexo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_carrito)
+                        .addGap(417, 417, 417))
                     .addGroup(pantalonesLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77)
-                .addComponent(btn_carrito)
-                .addContainerGap(302, Short.MAX_VALUE))
+                        .addGroup(pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pantalonesLayout.createSequentialGroup()
+                                .addGroup(pantalonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pantalonesLayout.createSequentialGroup()
+                                        .addGap(276, 276, 276)
+                                        .addComponent(lblPrecio))
+                                    .addGroup(pantalonesLayout.createSequentialGroup()
+                                        .addGap(150, 150, 150)
+                                        .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(86, 86, 86)
+                                .addComponent(lblStock))
+                            .addGroup(pantalonesLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(PanelTallas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(300, Short.MAX_VALUE))))
         );
 
         Pestañas.addTab("pantalones", pantalones);
@@ -697,7 +804,7 @@ public class Inicio extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
+            .addGap(0, 923, Short.MAX_VALUE)
         );
 
         Pestañas.addTab("Casual", jPanel5);
@@ -710,7 +817,7 @@ public class Inicio extends javax.swing.JPanel {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
+            .addGap(0, 923, Short.MAX_VALUE)
         );
 
         Pestañas.addTab("Acsesorios", jPanel6);
@@ -723,7 +830,7 @@ public class Inicio extends javax.swing.JPanel {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
+            .addGap(0, 923, Short.MAX_VALUE)
         );
 
         Pestañas.addTab("consulta", jPanel7);
@@ -736,7 +843,7 @@ public class Inicio extends javax.swing.JPanel {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
+            .addGap(0, 923, Short.MAX_VALUE)
         );
 
         Pestañas.addTab("reporte", jPanel8);
@@ -817,6 +924,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JPanel Deportivo;
     private javax.swing.JPanel Galeria;
     private javax.swing.JPanel Inicio;
+    private javax.swing.JPanel PanelTallas;
     private javax.swing.JPanel Panelpuntos;
     private javax.swing.JTabbedPane Pestañas;
     private javax.swing.JButton btn_Atras;
@@ -859,6 +967,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblSexo;
+    private javax.swing.JLabel lblStock;
     private javax.swing.JPanel pantalones;
     private javax.swing.JPanel puntitos;
     private javax.swing.JPanel venta;

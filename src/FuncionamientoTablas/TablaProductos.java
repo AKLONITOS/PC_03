@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TablaProductos {
@@ -31,7 +33,7 @@ public class TablaProductos {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Producto pro = new Producto();
-               pro.setCodigo(rs.getString("Codigo"));
+               pro.setCodigo(rs.getInt("Codigo"));
                pro.setNombre(rs.getString("Nombre"));
                pro.setCategoria(rs.getString("Categoria"));
                pro.setTalla(rs.getString("Talla"));
@@ -57,7 +59,7 @@ public class TablaProductos {
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
-            ps.setString(1, pro.getCodigo());
+            ps.setInt(1, pro.getCodigo());
             ps.setString(2, pro.getNombre());
             ps.setString(3, pro.getCategoria());
             ps.setString(4, pro.getTalla());
@@ -138,6 +140,36 @@ public class TablaProductos {
     return productos;
     }
     
+    /*public List<Producto> listarProductosPorCategoria(String categoria) {
+    List<Producto> productos = new ArrayList<>();
+    String sql = "SELECT * FROM productos WHERE Categoria = ?";
+    try {
+        con = cn.getConnection();
+        ps = con.prepareStatement(sql);
+        ps.setString(1, categoria);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Producto producto = new Producto();
+            producto.setCodigo(rs.getInt("Codigo"));
+            producto.setNombre(rs.getString("Nombre"));
+            producto.setTalla(rs.getString("Talla"));
+            producto.setPreciovent(rs.getDouble("Precio"));
+            producto.setStock(rs.getInt("Stock"));
+            producto.setStockmin(rs.getInt("StockMinimo"));
+            producto.setImagen(rs.getBytes("Imagen"));
+            productos.add(producto);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Error al listar productos.");
+    }
+    return productos;
+}*/
+    
+    
+
+    
     public List<Producto> listarProductosPorCategoria(String categoria) {
     List<Producto> productos = new ArrayList<>();
     String sql = "SELECT * FROM productos WHERE Categoria = ?";
@@ -149,9 +181,14 @@ public class TablaProductos {
 
         while (rs.next()) {
             Producto producto = new Producto();
+            producto.setCodigo(rs.getInt("Codigo"));
             producto.setNombre(rs.getString("Nombre"));
             producto.setPreciovent(rs.getDouble("Preciovent"));
             producto.setImagen(rs.getBytes("Imagen"));
+            producto.setTalla(rs.getString("Talla"));
+            producto.setSexo(rs.getString("Sexo"));
+            producto.setStock(rs.getInt("Stock"));
+            producto.setStockmin(rs.getInt("Stockmin"));
             productos.add(producto);
         }
     } catch (Exception e) {
@@ -160,6 +197,8 @@ public class TablaProductos {
     }
     return productos;
     }
+    
+    
 }
        
     

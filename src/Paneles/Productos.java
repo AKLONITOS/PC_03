@@ -362,7 +362,7 @@ public class Productos extends javax.swing.JPanel {
         // TODO add your handling code here:
         if ("".equals(txt_codigo.getText())|| !"".equals(txt_nombre.getText())|| !"".equals(txt_Stock.getText())|| !"".equals(txt_Stockmin.getText())
                 || !"".equals(txt_preciocosto.getText())|| !"".equals(txt_precioventa.getText())|| !"".equals(txt_color.getText())|| !"".equals(txt_imagen.getText())) {
-           pro.setCodigo(txt_codigo.getText());
+           pro.setCodigo(Integer.parseInt(txt_codigo.getText()));
            pro.setNombre(txt_nombre.getText());
            String selecionCategoria = (String) cb_categoria.getSelectedItem();
            pro.setCategoria(selecionCategoria);
@@ -469,13 +469,14 @@ public class Productos extends javax.swing.JPanel {
         boolean promocion = (boolean) TablaListaPro.getValueAt(fila, 10); 
         chb_promocion.setSelected(promocion);
         String fechaCaducidad = TablaListaPro.getValueAt(fila, 11).toString();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // Ajusta el formato si es necesario
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Ajusta el formato si es necesario
         try {
             Date fecha = sdf.parse(fechaCaducidad);
             txt_fecha.setDate(fecha); 
         } catch (ParseException e) {
             e.printStackTrace();
     }
+        
         
         
 
