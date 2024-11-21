@@ -656,17 +656,17 @@ public class Incio1 extends javax.swing.JPanel {
 
     private void btn_poloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_poloActionPerformed
         // TODO add your handling code here:
-        Pestañas.setSelectedIndex(0);
+        Pestañas.setSelectedIndex(2);
     }//GEN-LAST:event_btn_poloActionPerformed
 
     private void btn_pantalonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pantalonesActionPerformed
         // TODO add your handling code here:
-        Pestañas.setSelectedIndex(0);
+        Pestañas.setSelectedIndex(2);
     }//GEN-LAST:event_btn_pantalonesActionPerformed
 
     private void btn_casacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_casacasActionPerformed
         // TODO add your handling code here:
-        Pestañas.setSelectedIndex(0);
+        Pestañas.setSelectedIndex(2);
     }//GEN-LAST:event_btn_casacasActionPerformed
 
 

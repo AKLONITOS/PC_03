@@ -22,6 +22,7 @@ import Paneles.Clientes;
 import Paneles.Incio1;
 
 import Paneles.Productos;
+import Paneles.Usuario;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -159,6 +160,9 @@ public class MenuItem extends JPanel {
                 Menu.getMain().showForm(new Productos());
             }else if(subIndex == 1){
                     Menu.getMain().showForm(new Clientes());
+            
+            }else if(subIndex == 3){
+                    Menu.getMain().showForm(new Usuario());
             
             }
             break;
