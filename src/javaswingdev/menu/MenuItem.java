@@ -18,6 +18,7 @@ import Paneles.Form_Dashboard;
 import Paneles.Form_Empty;
 import Paneles.otro;
 import Interfaz.Menu;
+import Paneles.Clientes;
 import Paneles.Inicio;
 import Paneles.Productos;
 import javax.swing.JOptionPane;
@@ -153,23 +154,24 @@ public class MenuItem extends JPanel {
             if (subIndex == 0) {
                 
                  
-            } else if (subIndex == 1) {
+            } else if (subIndex == 2) {
                 Menu.getMain().showForm(new Productos());
-            }else if(subIndex == 2){
-                    Menu.getMain().showForm(new Productos());
+            }else if(subIndex == 1){
+                    Menu.getMain().showForm(new Clientes());
             
             }
             break;
-            /*case 2:
-            if (subIndex == 0) {
-                
-                 Menu.getMain().showForm(new Productos());
-            } else if (subIndex == 1) {
-                Menu.getMain().showForm(new Productos());
-                } else if (subIndex == 2) {
-                    Menu.getMain().showForm(new Productos());
-                
             
+            /*
+            case 2:
+            if (subIndex == 1) {
+                
+            } else if (subIndex == 2) {
+                Menu.getMain().showForm(new Cliente());
+                } else if (subIndex == 3) {
+                    Menu.getMain().showForm(new Cliente());
+            
+            /*
             }
             break;
             case 3:

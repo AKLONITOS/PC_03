@@ -14,7 +14,7 @@ public class Conexion {
     private static String DRIVER="com.mysql.cj.jdbc.Driver";
     private static String USUARIO="root";
     private static String PASSWORD="";
-    private static String URL="jdbc:mysql://localhost:3306/crearcuenta";
+    private static String URL="jdbc:mysql://localhost:3306/pctres";
     
     static{
         try{
@@ -24,7 +24,7 @@ public class Conexion {
             
         }
     }
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection con=null;
         try{
             con=DriverManager.getConnection(URL,USUARIO,PASSWORD);

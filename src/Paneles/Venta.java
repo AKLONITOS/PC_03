@@ -98,7 +98,7 @@ public class Venta extends javax.swing.JPanel {
         jButton6.setBorder(null);
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, 110));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1150, 670));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1150, 640));
     }// </editor-fold>//GEN-END:initComponents
 
 

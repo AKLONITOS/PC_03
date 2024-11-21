@@ -4,6 +4,20 @@
  */
 package Interfaz;
 
+import Clases.Control_Consultas;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.print.PrinterException;
+import java.io.File;
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author EQUIPO
@@ -13,9 +27,13 @@ public class Consultas_Factura extends javax.swing.JFrame {
     /**
      * Creates new form Consultas_Factura
      */
+    String nro_factura="";
+    Control_Consultas cc = new Control_Consultas();
     public Consultas_Factura() {
         initComponents();
+        dc_fecha.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,10 +46,9 @@ public class Consultas_Factura extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jb_buscando = new javax.swing.JLabel();
         cb_buscarpo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        txt_cliente = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtb_consultasfac = new javax.swing.JTable();
@@ -40,6 +57,8 @@ public class Consultas_Factura extends javax.swing.JFrame {
         btn_detalles = new javax.swing.JButton();
         btn_mostrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        dc_fecha = new com.toedter.calendar.JDateChooser();
+        jTextFieldParametroBusqueda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,35 +70,44 @@ public class Consultas_Factura extends javax.swing.JFrame {
         jLabel1.setText("Consultas de Facturas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Cliente");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
+        jb_buscando.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jb_buscando.setText("Cliente");
+        jPanel1.add(jb_buscando, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
-        cb_buscarpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_buscarpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cliente", "fechas" }));
+        cb_buscarpo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_buscarpoActionPerformed(evt);
+            }
+        });
         jPanel1.add(cb_buscarpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 130, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Buscar por");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        txt_cliente.setText("jTextField1");
-        jPanel1.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 160, 30));
-
         btn_buscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_buscar.setText("BUSCAR");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, -1, 30));
 
         jtb_consultasfac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Num_facturas", "Cliente", "Fecha", "Total"
             }
         ));
+        jtb_consultasfac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtb_consultasfacMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtb_consultasfac);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 610, 290));
@@ -96,18 +124,45 @@ public class Consultas_Factura extends javax.swing.JFrame {
 
         btn_imprimir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_imprimir.setText("IMPRIMIR");
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 100, 30));
 
         btn_detalles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_detalles.setText("VER DETALLES PRODUCTOS");
+        btn_detalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_detallesActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_detalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 190, 30));
 
         btn_mostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_mostrar.setText("MOSTRAR TODOS");
+        btn_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 140, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresora.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 110, 110));
+
+        dc_fecha.setDateFormatString("yyyy-MM-dd");
+        dc_fecha.setMaxSelectableDate(new java.util.Date(253370786517000L));
+        jPanel1.add(dc_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 170, 30));
+
+        jTextFieldParametroBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldParametroBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldParametroBusquedaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldParametroBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +182,120 @@ public class Consultas_Factura extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void cb_buscarpoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_buscarpoActionPerformed
+        // TODO add your handling code here:
+        if (cb_buscarpo.getSelectedIndex() == 0){
+            jb_buscando.setText("Cliente");
+            dc_fecha.setVisible(false);
+            jTextFieldParametroBusqueda.setVisible(true);
+        }
+        if (cb_buscarpo.getSelectedIndex() == 1){
+            jb_buscando.setText("Fecha");
+            dc_fecha.setVisible(true);
+            jTextFieldParametroBusqueda.setVisible(false);
+        }
+        
+        
+    }//GEN-LAST:event_cb_buscarpoActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        // TODO add your handling code here:
+        boolean buscarPorFacturas = true;
+        boolean buscarPorCliente = true;
+        boolean buscarPorFecha = true;
+        
+        try{
+        String parametroBusqueda = jTextFieldParametroBusqueda.getText();
+        
+
+        if (cb_buscarpo.getSelectedIndex() == 0){
+            buscarPorFacturas = false;
+            buscarPorCliente = true;
+            buscarPorFecha = false;
+          
+        }
+        if (cb_buscarpo.getSelectedIndex() == 1){
+            buscarPorFacturas = false;
+            buscarPorCliente = false;
+            buscarPorFecha = true;
+            
+            // dando la vuelta para leer fecha
+            String formato = dc_fecha.getDateFormatString();
+            Date date = dc_fecha.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat(formato);
+            jTextFieldParametroBusqueda.setText(String.valueOf(sdf.format(date)));
+            parametroBusqueda = jTextFieldParametroBusqueda.getText();
+        }
+        
+      
+        cc.buscarFacturas(parametroBusqueda,buscarPorFacturas,buscarPorCliente, buscarPorFecha);
+            int[] anchos = {150, 300,200,150 , 70};
+        
+        for (int i = 0; i < jtb_consultasfac.getColumnCount(); i++) {
+            jtb_consultasfac.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null," bash "+e);
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void jTextFieldParametroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldParametroBusquedaActionPerformed
+
+    private void btn_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrarActionPerformed
+        // TODO add your handling code here:
+        cc.listarTodosFacturas();
+        int[] anchos = {150, 300,200,150 , 70};
+        
+        for (int i = 0; i < jtb_consultasfac.getColumnCount(); i++) {
+            jtb_consultasfac.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+    }//GEN-LAST:event_btn_mostrarActionPerformed
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        // TODO add your handling code here:
+        String reporte = JOptionPane.showInputDialog(null, "Escriba Titulo de la hoja que vas a imprimir?");
+        // IMPRIMIR POR IMPRESORA
+        try {
+            //Mensaje de encabezado
+            MessageFormat  headerFormat = new MessageFormat("Reportes de "+reporte);           
+            //Mensaje en el pie de pagina
+            MessageFormat footerFormat = new MessageFormat("FERRETERIA FLOREZ");
+            //Imprimir JTable
+            jtb_consultasfac.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Consultas_Factura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_imprimirActionPerformed
+
+    private void btn_detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detallesActionPerformed
+        // TODO add your handling code here:
+        int i = jtb_consultasfac.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Favor... seleccione una fila");
+        } else {
+           
+             int numero = Integer.parseInt( jtb_consultasfac.getValueAt(i, 0).toString() );
+        }
+                              String file = new String("/facturas/" + nro_factura + ".pdf"); 
+     String master = System.getProperty("user.dir") + file;
+try {
+     File path = new File (master);
+     Desktop.getDesktop().open(path);
+}catch (IOException ex) {
+     ex.printStackTrace();
+} 
+    }//GEN-LAST:event_btn_detallesActionPerformed
+
+    private void jtb_consultasfacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_consultasfacMouseClicked
+        // TODO add your handling code here:
+        int fila = jtb_consultasfac.rowAtPoint(evt.getPoint());
+
+       
+        nro_factura=(jtb_consultasfac.getValueAt(fila, 0).toString());    
+    }//GEN-LAST:event_jtb_consultasfacMouseClicked
 
     /**
      * @param args the command line arguments
@@ -159,6 +328,7 @@ public class Consultas_Factura extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Consultas_Factura().setVisible(true);
+                
             }
         });
     }
@@ -170,13 +340,14 @@ public class Consultas_Factura extends javax.swing.JFrame {
     private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_mostrar;
     private javax.swing.JComboBox<String> cb_buscarpo;
+    private com.toedter.calendar.JDateChooser dc_fecha;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtb_consultasfac;
-    private javax.swing.JTextField txt_cliente;
+    private javax.swing.JTextField jTextFieldParametroBusqueda;
+    private javax.swing.JLabel jb_buscando;
+    public static javax.swing.JTable jtb_consultasfac;
     // End of variables declaration//GEN-END:variables
 }
