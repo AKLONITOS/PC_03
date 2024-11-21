@@ -19,7 +19,8 @@ import Paneles.Form_Empty;
 import Paneles.otro;
 import Interfaz.Menu;
 import Paneles.Clientes;
-import Paneles.Inicio;
+import Paneles.Incio1;
+
 import Paneles.Productos;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -149,7 +150,7 @@ public class MenuItem extends JPanel {
 
     
     switch (index) {
-        case 0:Menu.getMain().showForm(new Inicio()); break;
+        case 0:Menu.getMain().showForm(new Incio1()); break;
         case 1:
             if (subIndex == 0) {
                 
@@ -195,7 +196,7 @@ public class MenuItem extends JPanel {
             
         default:
             
-            Menu.getMain().showForm(new Inicio());
+            Menu.getMain().showForm(new Incio1());
             break;
     }
 }

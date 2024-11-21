@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package FuncionamientoTablas;
 
 import Clases.Cliente;
@@ -18,6 +15,7 @@ import java.util.List;
  *
  * @author EQUIPO
  */
+
 public class TablaCliente {
     Connection con;
     Conexion cn=new Conexion();
@@ -97,3 +95,4 @@ public class TablaCliente {
     
     
 }
+

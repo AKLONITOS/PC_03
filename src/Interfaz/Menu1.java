@@ -4,8 +4,8 @@
  */
 package Interfaz;
 
+import Paneles.Incio1;
 import Paneles.Productos;
-import Paneles.Inicio;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -22,7 +22,7 @@ public class Menu1 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        Inicio p1= new Inicio() ;
+        Incio1 p1= new Incio1() ;
         p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();
@@ -34,7 +34,7 @@ public class Menu1 extends javax.swing.JFrame {
         
     }
     private void cargarPanelInicio() {
-        Inicio p1 = new Inicio();
+        Incio1 p1 = new Incio1();
         
     }
    
@@ -61,7 +61,6 @@ public class Menu1 extends javax.swing.JFrame {
         btn_Productos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PestañadeVinculacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -69,23 +68,23 @@ public class Menu1 extends javax.swing.JFrame {
         PestañadeVinculacion.setLayout(PestañadeVinculacionLayout);
         PestañadeVinculacionLayout.setHorizontalGroup(
             PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1808, Short.MAX_VALUE)
+            .addGap(0, 1819, Short.MAX_VALUE)
         );
         PestañadeVinculacionLayout.setVerticalGroup(
             PestañadeVinculacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGap(0, 893, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PestañadeVinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1810, 800));
+        getContentPane().add(PestañadeVinculacion, java.awt.BorderLayout.CENTER);
 
         jLabel1.setText("carrito");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1730, 50, -1, -1));
+        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         jLabel2.setText("usuario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 50, -1, -1));
+        getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
 
         jLabel3.setText("venta");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 50, -1, -1));
+        getContentPane().add(jLabel3, java.awt.BorderLayout.LINE_END);
 
         jMenu1.setText("Home");
 
@@ -124,7 +123,7 @@ public class Menu1 extends javax.swing.JFrame {
 
     private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
         // TODO add your handling code here:
-        Inicio p1= new Inicio() ;
+        Incio1 p1= new Incio1() ;
         p1.setSize(1820, 770);
         p1.setLocation(0,0);
         PestañadeVinculacion.removeAll();

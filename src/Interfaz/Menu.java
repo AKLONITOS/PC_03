@@ -3,7 +3,7 @@ package Interfaz;
 import java.awt.Component;
 import Paneles.Form_Dashboard;
 import Paneles.Form_Empty;
-import Paneles.Inicio;
+import Paneles.Incio1;
 import javaswingdev.menu.EventMenuSelected;
 import javax.swing.SwingUtilities;
 
@@ -173,7 +173,7 @@ public class Menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu().setVisible(true);
-                Menu.getMain().showForm(new Inicio());
+                Menu.getMain().showForm(new Incio1());
             }
         });
     }
