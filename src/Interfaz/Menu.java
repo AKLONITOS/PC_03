@@ -118,6 +118,8 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        body.getAccessibleContext().setAccessibleName("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
