@@ -472,10 +472,25 @@ public class Incio1 extends javax.swing.JPanel {
         Pestañas.addTab("Inicio", Inicio);
 
         btn_polo.setText("jButton1");
+        btn_polo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_poloActionPerformed(evt);
+            }
+        });
 
         btn_pantalones.setText("jButton1");
+        btn_pantalones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pantalonesActionPerformed(evt);
+            }
+        });
 
         btn_casacas.setText("jButton1");
+        btn_casacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_casacasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -638,6 +653,21 @@ public class Incio1 extends javax.swing.JPanel {
         // TODO add your handling code here:
         Pestañas.setSelectedIndex(0);
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void btn_poloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_poloActionPerformed
+        // TODO add your handling code here:
+        Pestañas.setSelectedIndex(0);
+    }//GEN-LAST:event_btn_poloActionPerformed
+
+    private void btn_pantalonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pantalonesActionPerformed
+        // TODO add your handling code here:
+        Pestañas.setSelectedIndex(0);
+    }//GEN-LAST:event_btn_pantalonesActionPerformed
+
+    private void btn_casacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_casacasActionPerformed
+        // TODO add your handling code here:
+        Pestañas.setSelectedIndex(0);
+    }//GEN-LAST:event_btn_casacasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
